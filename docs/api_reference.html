@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; iorodeo-potentiostat 0.0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hardware Summary" href="hardware.html" />
+    <link rel="prev" title="Voltametric Tests" href="tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
+            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexer.html">Multiplexer Exapansion Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Worked Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#potentiostat">potentiostat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat"><code class="docutils literal notranslate"><span class="pre">Potentiostat</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect"><code class="docutils literal notranslate"><span class="pre">Potentiostat.disconnect_all_mux_elect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_all_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_all_curr_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_all_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_all_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_all_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_all_volt_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_auto_connect"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_auto_connect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_ctr_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_curr"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_curr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_curr_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_device_id"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_enabled_mux_channels"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_enabled_mux_channels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_firmware_version"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_firmware_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_hardware_variant"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_hardware_variant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_hardware_version"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_hardware_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_mux_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_mux_ctr_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_mux_enabled"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_mux_enabled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_mux_ref_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_mux_ref_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_mux_test_names"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_mux_test_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_mux_wrk_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_mux_wrk_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_param"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_param()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_ref_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_ref_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_ref_elect_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_ref_elect_volt_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_ref_volt"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_ref_volt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_sample_period"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_sample_period()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_sample_rate"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_sample_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_test_done_time"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_test_done_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_test_names"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_test_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_volt"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_volt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_volt_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_wrk_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_wrk_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.run_test"><code class="docutils literal notranslate"><span class="pre">Potentiostat.run_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.send_cmd"><code class="docutils literal notranslate"><span class="pre">Potentiostat.send_cmd()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_all_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_all_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_auto_connect"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_auto_connect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_ctr_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_curr_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_device_id"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_enabled_mux_channels"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_enabled_mux_channels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_ctr_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_enabled"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_enabled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_ref_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_ref_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_wrk_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_wrk_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_param"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_param()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_ref_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_ref_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_ref_elect_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_ref_elect_volt_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_sample_period"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_sample_period()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_sample_rate"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_sample_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_volt"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_volt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_volt_range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_wrk_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_wrk_elect_connected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.stop_test"><code class="docutils literal notranslate"><span class="pre">Potentiostat.stop_test()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iorodeo-potentiostat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_reference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-potentiostat.potentiostat">
+<span id="api-reference"></span><span id="api-ref"></span><h1>API Reference<a class="headerlink" href="#module-potentiostat.potentiostat" title="Permalink to this heading"></a></h1>
+<section id="potentiostat">
+<h2>potentiostat<a class="headerlink" href="#potentiostat" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>This module implements the serial interface to the Rodeostat open source
+Potentiostat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><ol class="loweralpha simple" start="3">
+<li><p>2017 by IO Rodeo</p></li>
+</ol>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>MIT, see LICENSE.txt for more details.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">potentiostat.potentiostat.</span></span><span class="sig-name descname"><span class="pre">Potentiostat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat" title="Permalink to this definition"></a></dt>
+<dd><p>Provides a high level interface for serial communications with the Rodeostat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>port</strong> (<em>str</em>) – serial port associated with the Rodeostat, e.g. /dev/ttyACM0, COM1, etc.</p>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><p><strong>timeout</strong> (<em>float</em>) – serial port ready timeout (seconds)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect">
+<span class="sig-name descname"><span class="pre">disconnect_all_mux_elect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect" title="Permalink to this definition"></a></dt>
+<dd><p>Disconnects all electrodes (reference, counter and working) when
+using the multiplexer expansion hardware.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_all_curr_range">
+<span class="sig-name descname"><span class="pre">get_all_curr_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_all_curr_range" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of all current ranges supported by the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>all available current ranges as str e.g., [‘1uA’, 10uA’, ‘100uA’, ‘1000uA’]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_all_elect_connected">
+<span class="sig-name descname"><span class="pre">get_all_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_all_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the connected state (True/False) of all the electrodes
+(referene, counter and working). Only True if all are connected. This
+feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connected stat of all electrodes (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_all_volt_range">
+<span class="sig-name descname"><span class="pre">get_all_volt_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_all_volt_range" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a list of the voltage ranges supported by the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>available voltage ranges, e.g., [‘1V’, ‘2V’, ‘5V’, ‘10V’]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_auto_connect">
+<span class="sig-name descname"><span class="pre">get_auto_connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_auto_connect" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the value of the device’s auto-connect/auto-disconnect setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>autoconnect state (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_ctr_elect_connected">
+<span class="sig-name descname"><span class="pre">get_ctr_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_ctr_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the connected state (True/False) of the counter electrode.
+This feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connection state of counter electrode (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_curr">
+<span class="sig-name descname"><span class="pre">get_curr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_curr" title="Permalink to this definition"></a></dt>
+<dd><p>Gets an immediate measurement of the working electrode current.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>working electrode current, units (uA)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_curr_range">
+<span class="sig-name descname"><span class="pre">get_curr_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_curr_range" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the device’s range setting for measuring working electrode current (uA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>working electrode current range setting (from device), e.g., ‘10uA’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_device_id">
+<span class="sig-name descname"><span class="pre">get_device_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_device_id" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current value of the device identification number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>device identification number</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_enabled_mux_channels">
+<span class="sig-name descname"><span class="pre">get_enabled_mux_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_enabled_mux_channels" title="Permalink to this definition"></a></dt>
+<dd><p>Get the list of currently enabled multiplexer working electrode
+channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>enabled mux channels (from device).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_firmware_version">
+<span class="sig-name descname"><span class="pre">get_firmware_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_firmware_version" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the version string for the firmware on the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>firmware version, e.g. ‘FW0.0.8’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_hardware_variant">
+<span class="sig-name descname"><span class="pre">get_hardware_variant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_hardware_variant" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string representing the hardware variant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hardware variant, e.g. ‘10V_microAmpV0.2’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_hardware_version">
+<span class="sig-name descname"><span class="pre">get_hardware_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_hardware_version" title="Permalink to this definition"></a></dt>
+<dd><p>Returns string representing the hardware version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hardware version, e.g., ‘V0.2’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_mux_ctr_elect_connected">
+<span class="sig-name descname"><span class="pre">get_mux_ctr_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_mux_ctr_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the connected state (True or False) of the counter electrode
+when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connection state of mux counter electrode (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_mux_enabled">
+<span class="sig-name descname"><span class="pre">get_mux_enabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_mux_enabled" title="Permalink to this definition"></a></dt>
+<dd><p>Get multiplexer expansion hardware enabled state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>enable state of mux hardware (from device), True/Fasle</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_mux_ref_elect_connected">
+<span class="sig-name descname"><span class="pre">get_mux_ref_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_mux_ref_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the connected state (True/False) of the reference electrode
+when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connection state of mux reference electrode (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_mux_test_names">
+<span class="sig-name descname"><span class="pre">get_mux_test_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_mux_test_names" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the list of tests which are compatible with the multiplexer
+expansion hardware</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tests compatible with multiplexer</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_mux_wrk_elect_connected">
+<span class="sig-name descname"><span class="pre">get_mux_wrk_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_mux_wrk_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the connected state (1, 2, 3, 4, 5, 6, 7 or False) of the
+working electrode when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connection state of mux working electrode.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int/bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_param">
+<span class="sig-name descname"><span class="pre">get_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_param" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the current values of the parameters for the specified
+voltammetric test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>testname</strong> (<em>str</em>) – name of voltammetric test, e.g., ‘cyclic’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>current values of test parameters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_ref_elect_connected">
+<span class="sig-name descname"><span class="pre">get_ref_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_ref_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the connected state (True/False) of the reference electrode.
+This feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connected state of the reference electrode (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_ref_elect_volt_range">
+<span class="sig-name descname"><span class="pre">get_ref_elect_volt_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_ref_elect_volt_range" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the  device’s voltage range setting for the reference
+electrode analog input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>reference electrode voltage range returnd by device</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_ref_volt">
+<span class="sig-name descname"><span class="pre">get_ref_volt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_ref_volt" title="Permalink to this definition"></a></dt>
+<dd><p>Gets an immediate measurement of the potential between the working
+and reference electrode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>potential between working and reference electrode, units (V)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_sample_period">
+<span class="sig-name descname"><span class="pre">get_sample_period</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_sample_period" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current value for the sample period (ms). The sample period
+is the time between samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sample period (from device), units (ms)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_sample_rate">
+<span class="sig-name descname"><span class="pre">get_sample_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_sample_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the measurement sample period (Hz). Note, the sample rate is
+1/sample_period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>sample rate (from device), unit (Hz)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_test_done_time">
+<span class="sig-name descname"><span class="pre">get_test_done_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ms'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_test_done_time" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the time in seconds required to complete the specified test
+including any quietTime, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>test</strong> (<em>str</em>) – test name, e.g., ‘cyclic’</p>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><p><strong>timeunit</strong> (<em>str</em>) – units to use for time, ‘ms’ (default) or ‘s’</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>time required for test,  int if timeunit==’ms’, float if timeunit==’s’</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int/float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_test_names">
+<span class="sig-name descname"><span class="pre">get_test_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_test_names" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the list of the names of all tests which can be performed by
+the device with the current firmware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>names of all available tests.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_volt">
+<span class="sig-name descname"><span class="pre">get_volt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_volt" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the output voltage setting, i.e, the potential between the
+working and reference electrode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>output voltage setting, units (V)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_volt_range">
+<span class="sig-name descname"><span class="pre">get_volt_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_volt_range" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current value for the output voltage range (V).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>voltage range (from device)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_wrk_elect_connected">
+<span class="sig-name descname"><span class="pre">get_wrk_elect_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_wrk_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the connected state (True/False) of the working electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>connection state of working electrode (from device), True/False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.run_test">
+<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.run_test" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the test with specified test name and returns the time, voltage
+and current data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>testname</strong> (<em>str</em>) – name of test to run, e.g., ‘cyclic’, ‘constant’, linearSweep’</p>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>param</strong> (<em>dict</em>) – parameter settings for test, the default is None in
+which case the current values are used.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – name of output file for saving data</p></li>
+<li><p><strong>display</strong> (<em>str</em>) – output display mode, display==’pbar’ show a progressbar,
+display==’data’ shows a text stream and display==’’ shows nothing</p></li>
+<li><p><strong>timeunit</strong> (<em>str</em>) – units for time values, if timeunit==’s’ then time
+values are in seconds otherwise if timeunit==’ms’ then time values
+are is milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>data acquired during test.</p>
+<p>When the multiplexer is disabled a tuple (t,volt,curr) of lists is
+returned containing the measurement times (s), voltages (V) and
+currents (uA) respectively</p>
+<p>When the multiplexer is enabled run_test returns a dictionary
+containing the measured data for each channel. The keys of the
+dictionary returned are the enabled channel numbers and the values
+are dictionaries with the time, voltage and current measurments for
+that channel, keyed by ‘t’, ‘v’, and ‘i’ respectively.</p>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple/dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.send_cmd">
+<span class="sig-name descname"><span class="pre">send_cmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.send_cmd" title="Permalink to this definition"></a></dt>
+<dd><p>Sends a command to the device.  Low-level method - command is specified
+using command dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cmd_dict</strong> (<em>dict</em>) – commands to be sent to the device, e.g., {‘command’: ‘getVersion’}</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>JSON response message from device converted to a dictionary.</p>
+<p>For example, the response to {‘command’: ‘getVersion’} might be
+{‘success’: True, ‘response’: {‘command’: ‘getVersion’, ‘version’: ‘FW0.0.8’}}</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_all_elect_connected">
+<span class="sig-name descname"><span class="pre">set_all_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_all_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True/False) of all the electrodes
+(referene, counter and working). This feature requires hardware version
+&gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connection state of all electrodes.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connection state of all electrodes (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_auto_connect">
+<span class="sig-name descname"><span class="pre">set_auto_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_auto_connect" title="Permalink to this definition"></a></dt>
+<dd><p>Set auto-connect/auto-disconnect feature. If auto-connect is set to
+True then the  ref, ctr and wrk electrodes will be automatically
+connected at the beginning of each test and automatically disconnected
+at the end of each test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired value for autoconnect, True/False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>autoconnect state (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_ctr_elect_connected">
+<span class="sig-name descname"><span class="pre">set_ctr_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_ctr_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True/False) of the counter electrode.
+This feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connection state for counter electrode, True/False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connected state of counter electrode (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_curr_range">
+<span class="sig-name descname"><span class="pre">set_curr_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curr_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_curr_range" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the range setting for measuring working electrode (uA).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>curr_range</strong> (<em>str</em>) – the desired workign electrode current range setting, e.g., ‘10uA’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>working electrode current range setting (from device), e.g. ‘10uA’</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_device_id">
+<span class="sig-name descname"><span class="pre">set_device_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_device_id" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the current value of the device identification number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device_id</strong> (<em>int</em>) – desired value for device identification number</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>device identification number (from device).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_enabled_mux_channels">
+<span class="sig-name descname"><span class="pre">set_enabled_mux_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_enabled_mux_channels" title="Permalink to this definition"></a></dt>
+<dd><p>Enables the specified subset of multiplexer working electrode
+channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>channels</strong> (<em>list</em>) – list of mux channels to enable, e.g., [1,2,5]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>enabled mux channels (from device).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_mux_ctr_elect_connected">
+<span class="sig-name descname"><span class="pre">set_mux_ctr_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_mux_ctr_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True or False) of the counter electrode
+when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connection state for mux counter electrode, True/Fasle</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connection state of mux counter electrode (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_mux_enabled">
+<span class="sig-name descname"><span class="pre">set_mux_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_mux_enabled" title="Permalink to this definition"></a></dt>
+<dd><p>Enable/Disables the multiplexer expansion hardware</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired enable state of mux hardware, True/False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>enable state of mux hardware (from device), True/Fasle</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_mux_ref_elect_connected">
+<span class="sig-name descname"><span class="pre">set_mux_ref_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_mux_ref_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True/False) of the reference electrode
+when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connection for mux reference electrode, True/False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connection state of mux reference electrode (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_mux_wrk_elect_connected">
+<span class="sig-name descname"><span class="pre">set_mux_wrk_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_mux_wrk_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (1, 2, 3, 4, 5, 6, 7 or False) of the
+working electrode when using the multiplexer expansion hardware.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int/bool</em>) – desired connection state for mux working electrode.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connection state of mux working electrode.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int/bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_param">
+<span class="sig-name descname"><span class="pre">set_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_param" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the parameters for the specified voltammetric test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>testname</strong> (<em>str</em>) – name of voltammetric test</p></li>
+<li><p><strong>param</strong> (<em>dict</em>) – desired test parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>test parameters for testname (from device)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_ref_elect_connected">
+<span class="sig-name descname"><span class="pre">set_ref_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_ref_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True/False) of the reference electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connected state of reference electrode</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connected state of the reference electrode (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_ref_elect_volt_range">
+<span class="sig-name descname"><span class="pre">set_ref_elect_volt_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volt_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_ref_elect_volt_range" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the voltage range for the reference electrode analog input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>volt_range</strong> (<em>str</em>) – desired voltage range, e.g., ‘5V’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>reference electrode voltage range returnd by device</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_sample_period">
+<span class="sig-name descname"><span class="pre">set_sample_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_period</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_sample_period" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the sample period (ms) used for measurements. The sample period
+is the time between samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sample_period</strong> (<em>int</em>) – desired sample period, units (ms)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sample period (from device), units (ms)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_sample_rate">
+<span class="sig-name descname"><span class="pre">set_sample_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_sample_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the measurement sample rate (Hz). Note, this is an alternative
+way to set the sample period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sample_rate</strong> (<em>float</em>) – desired sample rate, units (Hz)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sample rate (from device), unit (Hz)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_volt">
+<span class="sig-name descname"><span class="pre">set_volt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_volt" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the output voltage setting, i.e., the potential between the
+working and reference electrode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>volt</strong> (<em>float</em>) – output voltage setting, units (V)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output voltage setting, units (V)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_volt_range">
+<span class="sig-name descname"><span class="pre">set_volt_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volt_range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_volt_range" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the output voltage range (V)- used when setting output voltage
+manually.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>volt_range</strong> (<em>str</em>) – desired output voltage range, e.g., ‘1V’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>voltage range (from device)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_wrk_elect_connected">
+<span class="sig-name descname"><span class="pre">set_wrk_elect_connected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_wrk_elect_connected" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the connected state (True/False) of the working electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – desired connection state for working electrode, True/False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>connection state of working electrode (from device), True/False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.stop_test">
+<span class="sig-name descname"><span class="pre">stop_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.stop_test" title="Permalink to this definition"></a></dt>
+<dd><p>Stops (any) currently running tests.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tests.html" class="btn btn-neutral float-left" title="Voltametric Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hardware.html" class="btn btn-neutral float-right" title="Hardware Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, Will Dickson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

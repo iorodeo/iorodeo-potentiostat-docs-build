@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worked Examples &mdash; iorodeo-potentiostat 0.0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Voltametric Tests" href="tests.html" />
+    <link rel="prev" title="Multiplexer Exapansion Board" href="multiplexer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
+            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexer.html">Multiplexer Exapansion Board</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Worked Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cyclic-voltammetry">Cyclic voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constant-voltage-voltammetry">Constant voltage voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-direct-control">Manual/direct control:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-linear-plus-sinewave">Example 1: linear plus sinewave</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-long-duration-constant-voltage-test">Example 2: long duration constant voltage test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iorodeo-potentiostat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Worked Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="worked-examples">
+<span id="examples-ref"></span><h1>Worked Examples<a class="headerlink" href="#worked-examples" title="Permalink to this heading"></a></h1>
+<p>In this section we show several worked examples demonstrating how to use iorodeo-potentiostat library
+with your Rodeostat shield to make measurements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The examples in this section make use of the <a class="reference external" href="http://matplotlib.org/">Matplotlib</a> <a class="footnote-reference brackets" href="#id2" id="id3">1</a> plotting library.
+You can find Instructions for installing maplotlib here: <a class="reference external" href="http://matplotlib.org/users/installing.html">installing Matplotlib</a> <a class="footnote-reference brackets" href="#id4" id="id5">2</a>.</p>
+</div>
+<section id="cyclic-voltammetry">
+<h2>Cyclic voltammetry<a class="headerlink" href="#cyclic-voltammetry" title="Permalink to this heading"></a></h2>
+<p>In the following example we demonstate how perform a <a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">cyclic voltammetry</a> <a class="footnote-reference brackets" href="#id6" id="id7">3</a> test with the following parameters:</p>
+<ul class="simple">
+<li><p>Starts and ends at minimum voltage of -100 mV .</p></li>
+<li><p>Reaches a maximum voltage of 1000 mV at mid-cycle.</p></li>
+<li><p>Transistions at a rate of 50 mV/s (-50 mV/s) from the minimum (maximum) to the maximum (minimum) voltage.</p></li>
+<li><p>Performs a single cycle i.e., transistions from minimum to maximum and back to minimum exactly once.</p></li>
+</ul>
+<p>As the test is run the data are saved to a file named <em>data.txt</em>. The data
+in the file consist of comma separated values of time, voltage and current.
+After the test is complete two figures are created to display the data. The
+first figure shows plots of the voltage (potential) and current vs time. The
+second figure shows a plot of the current vs the voltage (potential).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">potentiostat</span> <span class="kn">import</span> <span class="n">Potentiostat</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;/dev/ttyACM0&#39;</span>       <span class="c1"># Serial port for potentiostat device</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data.txt&#39;</span>       <span class="c1"># Output file for time, curr, volt data</span>
+
+<span class="n">test_name</span> <span class="o">=</span> <span class="s1">&#39;cyclic&#39;</span>        <span class="c1"># The name of the test to run</span>
+<span class="n">curr_range</span> <span class="o">=</span> <span class="s1">&#39;100uA&#39;</span>        <span class="c1"># The name of the current range [-100uA, +100uA]</span>
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mf">100.0</span>         <span class="c1"># The number of samples/second to collect</span>
+
+<span class="n">volt_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>             <span class="c1"># The minimum voltage in the waveform (V)</span>
+<span class="n">volt_max</span> <span class="o">=</span>  <span class="mf">1.0</span>             <span class="c1"># The maximum voltage in the waveform (V)</span>
+<span class="c1">#volt_per_sec = 0.050        # The rate at which to transition from volt_min to volt_max (V/s)</span>
+<span class="n">volt_per_sec</span> <span class="o">=</span> <span class="mf">1.00</span>         <span class="c1"># The rate at which to transition from volt_min to volt_max (V/s)</span>
+<span class="n">num_cycles</span> <span class="o">=</span> <span class="mi">1</span>              <span class="c1"># The number of cycle in the waveform</span>
+
+<span class="c1"># Convert parameters to amplitude, offset, period, phase shift for triangle waveform</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">volt_max</span> <span class="o">-</span> <span class="n">volt_min</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>            <span class="c1"># Waveform peak amplitude (V) </span>
+<span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">volt_max</span> <span class="o">+</span> <span class="n">volt_min</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span>               <span class="c1"># Waveform offset (V) </span>
+<span class="n">period_ms</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">amplitude</span><span class="o">/</span><span class="n">volt_per_sec</span><span class="p">)</span>   <span class="c1"># Waveform period in (ms)</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="mf">0.0</span>                                      <span class="c1"># Waveform phase shift - expressed as [0,1] number</span>
+                                                 <span class="c1"># 0 = no phase shift, 0.5 = 180 deg phase shift, etc.</span>
+
+<span class="c1"># Create dictionary of waveform parameters for cyclic voltammetry test</span>
+<span class="n">test_param</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;quietValue&#39;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s1">&#39;quietTime&#39;</span>  <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;amplitude&#39;</span>  <span class="p">:</span> <span class="n">amplitude</span><span class="p">,</span>
+        <span class="s1">&#39;offset&#39;</span>     <span class="p">:</span> <span class="n">offset</span><span class="p">,</span>
+        <span class="s1">&#39;period&#39;</span>     <span class="p">:</span> <span class="n">period_ms</span><span class="p">,</span>
+        <span class="s1">&#39;numCycles&#39;</span>  <span class="p">:</span> <span class="n">num_cycles</span><span class="p">,</span>
+        <span class="s1">&#39;shift&#39;</span>      <span class="p">:</span> <span class="n">shift</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<span class="c1"># Create potentiostat object and set current range, sample rate and test parameters</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">Potentiostat</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>     
+<span class="n">dev</span><span class="o">.</span><span class="n">set_curr_range</span><span class="p">(</span><span class="n">curr_range</span><span class="p">)</span>   
+<span class="n">dev</span><span class="o">.</span><span class="n">set_sample_rate</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="n">test_name</span><span class="p">,</span><span class="n">test_param</span><span class="p">)</span>
+
+<span class="c1"># Run cyclic voltammetry test</span>
+<span class="c1">#t,volt,curr = dev.run_test(test_name,display=&#39;pbar&#39;,filename=datafile)</span>
+<span class="n">t</span><span class="p">,</span><span class="n">volt</span><span class="p">,</span><span class="n">curr</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="n">test_name</span><span class="p">,</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">datafile</span><span class="p">)</span>
+
+<span class="c1"># plot results using matplotlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">volt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">curr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;current (uA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (sec)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volt</span><span class="p">,</span><span class="n">curr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;potential (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;current (uA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>An example of the data generated by running this test using a screen printed
+electrode in a 8mM solution of ascorbate, is shown below.</p>
+<figure class="align-center">
+<img alt="_images/cyclic_example_values_vs_t.png" src="_images/cyclic_example_values_vs_t.png" />
+</figure>
+<figure class="align-center">
+<img alt="_images/cyclic_example_curr_vs_volt.png" src="_images/cyclic_example_curr_vs_volt.png" />
+</figure>
+<p>Further details on the methods used for the ascorbate experiments can be found
+here <a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a> <a class="footnote-reference brackets" href="#id8" id="id9">4</a>.</p>
+</section>
+<section id="constant-voltage-voltammetry">
+<h2>Constant voltage voltammetry<a class="headerlink" href="#constant-voltage-voltammetry" title="Permalink to this heading"></a></h2>
+<p>This example demonstrates how to preform constant voltage voltammetry. The test parameters are as follows:</p>
+<ul class="simple">
+<li><p>Prior to the start of the test a quiet period is used where the output voltage at 0V for 1s (1000ms).</p></li>
+<li><p>During the test the output voltage is set to 2.5V and kept there for 4s (4000ms).</p></li>
+<li><p>Data is acquired at a rate of 100 samples/second for the duration of the quiet period and the constant voltage test.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">potentiostat</span> <span class="kn">import</span> <span class="n">Potentiostat</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;/dev/ttyACM0&#39;</span>    <span class="c1"># Serial port for potentiostat device</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data.txt&#39;</span>    <span class="c1"># Name of output data file</span>
+
+<span class="n">test_name</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span>   <span class="c1"># Name of test to run - constant volate voltammetery</span>
+<span class="n">curr_range</span> <span class="o">=</span> <span class="s1">&#39;100uA&#39;</span>     <span class="c1"># Name of current range for test [-10uA, +10uA]</span>
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mf">100.0</span>      <span class="c1"># Rate (samples/sec) at which to collect samples </span>
+
+<span class="n">test_param</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="s1">&#39;quietValue&#39;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>        <span class="c1"># Output voltage during quiet peroid</span>
+        <span class="s1">&#39;quietTime&#39;</span>  <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>       <span class="c1"># Duration of quiet period (ms)</span>
+        <span class="s1">&#39;value&#39;</span>      <span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>        <span class="c1"># Output volatage (V) durring constant voltage test</span>
+        <span class="s1">&#39;duration&#39;</span>   <span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>       <span class="c1"># Duration of constant voltage test (ms)</span>
+        <span class="p">}</span>
+
+<span class="c1"># Create Device object and set sample rate, current range and test parameters</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">Potentiostat</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>             
+<span class="n">dev</span><span class="o">.</span><span class="n">set_sample_rate</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>   
+<span class="n">dev</span><span class="o">.</span><span class="n">set_curr_range</span><span class="p">(</span><span class="n">curr_range</span><span class="p">)</span>     
+<span class="n">dev</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="n">test_name</span><span class="p">,</span><span class="n">test_param</span><span class="p">)</span>
+
+<span class="c1"># Run cyclic voltammetry test</span>
+<span class="n">t</span><span class="p">,</span><span class="n">volt</span><span class="p">,</span><span class="n">curr</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="n">test_name</span><span class="p">,</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;pbar&#39;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">datafile</span><span class="p">)</span>
+
+<span class="c1"># plot results using matplotlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Voltage and current vs time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">volt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">test_param</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">curr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;current (uA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (sec)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Consider the dummy cell schematic show below.  We will use this dummy cell to
+generate example data using the constant voltage test program (above).</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/dummy_cell_schem.png"><img alt="_images/dummy_cell_schem.png" src="_images/dummy_cell_schem.png" style="width: 593.25px; height: 561.0px;" /></a>
+</figure>
+<p>There are three resistors  (R1, R2, R3) and one capacitor (C1) on the dummy
+cell. In the example below, showing voltage and current vs time, the values of the resistors and capacitors are:
+R1=100k, R2=50k, R3=0 Ohm (wire conductor), C1=4.7 uF.</p>
+<figure class="align-center">
+<img alt="_images/constant_example_curr_vs_volt.png" src="_images/constant_example_curr_vs_volt.png" />
+</figure>
+<p>During the one the 1 second quiet period the output voltage is 0 V.  After 1
+second the actual test begins and the output voltage is set to 2.5 V. There an
+initial spike in current at the start of the test. The current then decays
+exponentially, as the capacitor C1 charges, gradually approaching a steady state
+value.</p>
+</section>
+<section id="manual-direct-control">
+<h2>Manual/direct control:<a class="headerlink" href="#manual-direct-control" title="Permalink to this heading"></a></h2>
+<p>In this section we give several examples which demostrate how to use the
+Rodeostat  in manual/direct control mode. When using this mode,
+the output voltage is set and the current is measured directly from the host PC
+using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_volt()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_curr()</span></code> methods.  Note, the timing in
+manual/direct control mode is determined by the software on the host PC and it
+will not be as precise as when using a pre-programmed voltammetric test running
+in firmware on the Teensy 3.2.  However, it does offer a great deal of
+flexibility to the user and enables the creation of custom voltammetric test
+without any firmware programming.</p>
+<section id="example-1-linear-plus-sinewave">
+<h3>Example 1: linear plus sinewave<a class="headerlink" href="#example-1-linear-plus-sinewave" title="Permalink to this heading"></a></h3>
+<p>This example demonstrates how to use manual/direct control to create an output voltage
+which is sum of a linear function and a sine wave.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">potentiostat</span> <span class="kn">import</span> <span class="n">Potentiostat</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sched</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">run_manual_test</span><span class="p">(</span><span class="n">pstat</span><span class="p">,</span> <span class="n">volt_func</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run a voltammetric test in maunal/direct mode. </span>
+
+<span class="sd">    pstat      = potentiostat</span>
+<span class="sd">    volt_func  = output voltage function</span>
+<span class="sd">    dt         = sample time step</span>
+<span class="sd">    t_stop     = duration of the trial</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">time_list</span><span class="p">,</span> <span class="n">volt_list</span><span class="p">,</span> <span class="n">curr_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">scheduler</span> <span class="o">=</span> <span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_stop</span><span class="p">:</span>
+        <span class="c1"># Set potentiostat output voltage and samle current </span>
+        <span class="n">volt</span> <span class="o">=</span> <span class="n">volt_func</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">pstat</span><span class="o">.</span><span class="n">set_volt</span><span class="p">(</span><span class="n">volt</span><span class="p">)</span>
+        <span class="n">curr</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">get_curr</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:1.2f}</span><span class="s1">, </span><span class="si">{1:1.2f}</span><span class="s1">, </span><span class="si">{2:1.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">volt</span><span class="p">,</span> <span class="n">curr</span><span class="p">))</span>
+        <span class="n">time_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">volt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volt</span><span class="p">)</span>
+        <span class="n">curr_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr</span><span class="p">)</span>
+        <span class="c1"># Run scheduler to until time for the next sample (dt seconds)</span>
+        <span class="n">t_next</span> <span class="o">=</span> <span class="n">t_start</span> <span class="o">+</span> <span class="p">(</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dt</span>
+        <span class="n">scheduler</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">t_next</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="p">())</span> 
+        <span class="n">scheduler</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t_start</span>
+        <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">time_list</span><span class="p">,</span> <span class="n">volt_list</span><span class="p">,</span> <span class="n">curr_list</span>
+
+
+<span class="k">def</span> <span class="nf">create_sin_linear_func</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">per</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a function which in the interval [t0,t1] is a sum of linear</span>
+<span class="sd">    function and a sine wave.</span>
+
+<span class="sd">    t0   = time at which linear transition, from v0 to v1, begins</span>
+<span class="sd">    t1   = time at which linear transition, from v0 to v1, ends</span>
+<span class="sd">    v0   = initial value</span>
+<span class="sd">    v1   = final value</span>
+<span class="sd">    amp  = amplitude of superimposed sinewave</span>
+<span class="sd">    per  = period on superimposed sinewave</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">v0</span> 
+        <span class="k">elif</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t1</span><span class="p">:</span>
+            <span class="n">dt_trans</span> <span class="o">=</span> <span class="n">t1</span><span class="o">-</span><span class="n">t0</span>
+            <span class="n">v_lin</span> <span class="o">=</span> <span class="p">(</span><span class="n">v1</span><span class="o">-</span><span class="n">v0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="n">dt_trans</span> <span class="o">+</span> <span class="n">v0</span>
+            <span class="n">v_sin</span> <span class="o">=</span> <span class="n">amp</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t1</span><span class="p">)</span><span class="o">/</span><span class="n">per</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">v_lin</span> <span class="o">+</span> <span class="n">v_sin</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">v1</span>
+    <span class="k">return</span> <span class="n">func</span> 
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># Run parameters</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># Transition start time (s)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="mf">50.0</span>  <span class="c1"># Transition stop time (s)</span>
+
+    <span class="n">v0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.9</span>  <span class="c1"># Initial voltage (V)</span>
+    <span class="n">v1</span> <span class="o">=</span>  <span class="mf">1.2</span>  <span class="c1"># Final voltage (V)</span>
+
+    <span class="n">amp</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Sinusoid ampliude (V)</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Sinusoid period (s)</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Time step for setting voltage and measurements</span>
+    <span class="n">t_total</span> <span class="o">=</span> <span class="mf">60.0</span> <span class="c1"># Total experiment duration </span>
+
+    <span class="n">volt_func</span> <span class="o">=</span> <span class="n">create_sin_linear_func</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span><span class="n">t1</span><span class="p">,</span><span class="n">v0</span><span class="p">,</span><span class="n">v1</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">per</span><span class="p">)</span>
+
+    <span class="c1"># Create device object, set voltage/current ranges and run test</span>
+    <span class="n">pstat</span> <span class="o">=</span> <span class="n">Potentiostat</span><span class="p">(</span><span class="s1">&#39;/dev/ttyACM0&#39;</span><span class="p">)</span>
+    <span class="n">pstat</span><span class="o">.</span><span class="n">set_volt_range</span><span class="p">(</span><span class="s1">&#39;2V&#39;</span><span class="p">)</span>
+    <span class="n">pstat</span><span class="o">.</span><span class="n">set_curr_range</span><span class="p">(</span><span class="s1">&#39;100uA&#39;</span><span class="p">)</span>
+    <span class="n">pstat</span><span class="o">.</span><span class="n">set_all_elect_connected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">volt</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">run_manual_test</span><span class="p">(</span><span class="n">pstat</span><span class="p">,</span> <span class="n">volt_func</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t_total</span><span class="p">)</span>
+    <span class="n">pstat</span><span class="o">.</span><span class="n">set_all_elect_connected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Plot results</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">volt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;potential (V)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">curr</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;current (uA)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Example data generated using the program above for 50k dummy cell (R1=50k,
+R2=R3=0 , C1=0) is shown below.</p>
+<figure class="align-center">
+<img alt="_images/manual_control_v2.png" src="_images/manual_control_v2.png" />
+</figure>
+<p>In a similar manner you can easily create other custom tests by writing your
+own custom voltage function which gives specifies the desired output voltage as
+a function of time.</p>
+</section>
+<section id="example-2-long-duration-constant-voltage-test">
+<h3>Example 2: long duration constant voltage test<a class="headerlink" href="#example-2-long-duration-constant-voltage-test" title="Permalink to this heading"></a></h3>
+<p>Suppose you want to perform a very long duration (hours to days) constant
+voltage test with the potentiostat. The sample rate for this test would be
+fairly low - seconds to minutes between samples. In addition you wanted it such
+that the logging application for this test could be interrupted and re-started
+and any time.</p>
+<p>In the example below demonstrate how to use manual/direct control to create a
+such a data logger for long duration constant voltage tests.  Once started, the
+data logger shown below will run forever or until stopped by the user with
+Ctl-C. The tests can be stopped and re-started and any time.  On restart if the
+data logger finds an existing log file it will open this file and append data to it,
+otherwise a new log file will be created.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">const_volt_logger.py</span>
+
+<span class="sd">Example of a constant voltage test data logger which is intended for very long</span>
+<span class="sd">duration experiments with low sample rates. Uses Python&#39;s sched module for</span>
+<span class="sd">timing. Data is logged to output file specified in the params. The test runs</span>
+<span class="sd">indefinitely, but can  be interrupted with ctl-c. It can then restarted and</span>
+<span class="sd">will continue to append data to the same data file. </span>
+
+<span class="sd">Potentiostat Shield is operated manual/direct control mode where output voltage</span>
+<span class="sd">is set directly from python.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">potentiostat</span> <span class="kn">import</span> <span class="n">Potentiostat</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">signal</span>
+<span class="kn">import</span> <span class="nn">sched</span>
+
+<span class="k">class</span> <span class="nc">ConstVoltLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        param - dictionary of parameters for the constant voltage test. It</span>
+<span class="sd">        should contain the following items.</span>
+
+<span class="sd">         filename      Data log filename</span>
+<span class="sd">         port          Potentiostat serial port</span>
+<span class="sd">         volt_range    Output voltage range</span>
+<span class="sd">         curr_range    Measurement current range</span>
+<span class="sd">         sample_dt     Sample period (s)</span>
+<span class="sd">         volt          # Output voltage (V)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">param</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pstat</span> <span class="o">=</span> <span class="n">Potentiostat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pstat</span><span class="o">.</span><span class="n">set_volt_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;volt_range&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pstat</span><span class="o">.</span><span class="n">set_curr_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;curr_range&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pstat</span><span class="o">.</span><span class="n">set_volt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;volt&#39;</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">scheduler</span> <span class="o">=</span> <span class="n">sched</span><span class="o">.</span><span class="n">scheduler</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scheduler_event</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sigint_handler</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">get_file_start_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">t_start_file</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]):</span>
+            <span class="n">line_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">line_list</span> <span class="o">=</span> <span class="n">fid</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+                    <span class="n">start_line</span> <span class="o">=</span> <span class="n">line_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">start_line</span> <span class="o">=</span> <span class="n">start_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+                    <span class="n">t_start_file</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">start_line</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">except</span><span class="p">:</span> 
+                    <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">t_start_file</span>
+
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">t_start_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file_start_time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">t_start_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t_start_file</span> <span class="o">=</span> <span class="n">t_start</span>
+
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;press ctl-c to exit&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t (s), current (A)&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">],</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="p">:</span>
+                <span class="n">curr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pstat</span><span class="o">.</span><span class="n">get_curr</span><span class="p">()</span>
+                <span class="n">t_current</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="n">t_elapsed</span> <span class="o">=</span> <span class="n">t_current</span> <span class="o">-</span> <span class="n">t_start_file</span>
+
+                <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1"> </span><span class="si">{2}{3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_current</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span><span class="n">curr</span><span class="p">,</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:1.2f}{1}</span><span class="s1"> </span><span class="si">{2:1.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_elapsed</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span><span class="n">curr</span><span class="p">))</span>
+
+                <span class="n">t_next</span> <span class="o">=</span> <span class="n">t_start</span> <span class="o">+</span> <span class="p">(</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">[</span><span class="s1">&#39;sample_dt&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">scheduler_event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">enterabs</span><span class="p">(</span><span class="n">t_next</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span> <span class="p">())</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+                <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+    <span class="k">def</span> <span class="nf">sigint_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">signum</span><span class="p">,</span><span class="n">frame</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">cancel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scheduler_event</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="kc">True</span> 
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">param</span> <span class="o">=</span> <span class="p">{</span> 
+            <span class="s1">&#39;filename&#39;</span>   <span class="p">:</span> <span class="s1">&#39;logfile.txt&#39;</span><span class="p">,</span>   <span class="c1"># Data log filename</span>
+            <span class="s1">&#39;port&#39;</span>       <span class="p">:</span> <span class="s1">&#39;/dev/ttyACM0&#39;</span><span class="p">,</span>  <span class="c1"># Potentiostat serial port</span>
+            <span class="s1">&#39;volt_range&#39;</span> <span class="p">:</span> <span class="s1">&#39;1V&#39;</span><span class="p">,</span>            <span class="c1"># Output voltage range</span>
+            <span class="s1">&#39;curr_range&#39;</span> <span class="p">:</span> <span class="s1">&#39;1uA&#39;</span><span class="p">,</span>           <span class="c1"># Measurement current range</span>
+            <span class="s1">&#39;sample_dt&#39;</span>  <span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>             <span class="c1"># Sample period</span>
+            <span class="s1">&#39;volt&#39;</span>       <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>             <span class="c1"># Output voltage</span>
+            <span class="p">}</span>
+
+    <span class="n">data_logger</span> <span class="o">=</span> <span class="n">ConstVoltLogger</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+    <span class="n">data_logger</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p><a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p><a class="reference external" href="http://matplotlib.org/users/installing.html">http://matplotlib.org/users/installing.html</a></p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id7">3</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a></p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
+<dd><p><a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multiplexer.html" class="btn btn-neutral float-left" title="Multiplexer Exapansion Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tests.html" class="btn btn-neutral float-right" title="Voltametric Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, Will Dickson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

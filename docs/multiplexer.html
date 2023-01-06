@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiplexer Exapansion Board &mdash; iorodeo-potentiostat 0.0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Worked Examples" href="examples.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
+            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multiplexer Exapansion Board</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-disabling-the-multiplexer">Enabling/Disabling the multiplexer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-the-working-electrode-channels">Setting the working electrode channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-direct-operation-when-the-multiplexer">Manual/direct operation when the multiplexer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Worked Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iorodeo-potentiostat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Multiplexer Exapansion Board</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/multiplexer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multiplexer-exapansion-board">
+<span id="multiplexer-ref"></span><h1>Multiplexer Exapansion Board<a class="headerlink" href="#multiplexer-exapansion-board" title="Permalink to this heading"></a></h1>
+<p>This section provides a short guide to help you begin using your Rodeostat in
+conjunction with the multiplexer expansion board.  This  expansion board
+enables the Rodeostat to use up to seven independent working electrodes
+simultaneously. When connected to the Rodeostat additional features provided
+multiplexer may accessed programmatically via the Python API.</p>
+<section id="enabling-disabling-the-multiplexer">
+<h2>Enabling/Disabling the multiplexer<a class="headerlink" href="#enabling-disabling-the-multiplexer" title="Permalink to this heading"></a></h2>
+<p>In order to use the multiplexer it must first be enabled. This can be done
+using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_enabled()</span></code> method. To enable the
+multiplexer you would run the following command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rsp</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly in order to disable the multiplexer you would run the command shown below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rsp</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The response returned by the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_enabled()</span></code>
+will be either True/False indicating whether or not the multiplexer has been
+successfully enabled/disabled respectively.</p>
+</section>
+<section id="setting-the-working-electrode-channels">
+<h2>Setting the working electrode channels<a class="headerlink" href="#setting-the-working-electrode-channels" title="Permalink to this heading"></a></h2>
+<p>The multiplexer has seven working electrode channels. You don’t need to use all
+the working electrode channels and the same time. The subset of working
+electrode channel which are enabled can be set using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_enabled_mux_channels()</span></code> method. For example,
+the following command will enable working electrode channels 1, 3 and 7.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">set_enabled_mux_channels</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To query the device for the list of currently enabled working electrode
+channels you can using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_enabled_mux_channels()</span></code> method. For example
+the command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">channel_list</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">get_enabled_mux_channels</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In order to run a test with the multiplexer expansion board the firmware requires
+that at least one working electrode channel is enabled.</p>
+</section>
+<section id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this heading"></a></h2>
+<p>Running tests with the multiplexer expansion board enabled is almost exactly
+the same as normal using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code>
+method.  For example, in order to run the cyclic voltammetry test you could do
+the following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s1">&#39;cyclic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The main difference is that when the multiplexer is enabled the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code> returns a dictionary containing the
+measured data for each channel rather than a tuple of times, voltages and
+currents.  The keys of the dictionary returned are the enabled channel numbers
+and the values are dictionaries with the time, voltage and current measurments
+for that channel, keyed by ‘t’, ‘v’, and ‘i’ respectively.  Thus the time,
+voltage and current data for channel 1 can be accessed as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chan1_time</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>  <span class="c1"># channel 1, list of sample times</span>
+<span class="n">chan1_volt</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;v&#39;</span><span class="p">]</span>  <span class="c1"># channel 1, list of output voltages</span>
+<span class="n">chan1_curr</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;i&#39;</span><span class="p">]</span>  <span class="c1"># channel 1, list of current samples</span>
+</pre></div>
+</div>
+<p>The parameters for the test can be set as usual using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_param()</span></code> method as described in the
+<a class="reference internal" href="getting_started.html#getting-started-set-param-ref"><span class="std std-ref">Setting voltammetric test parameters</span></a> subsection, or by specifying the
+parameters using the params keyword argument to the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code> method as shown below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_param</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;quietValue&#39;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;quietTime&#39;</span>  <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s1">&#39;amplitude&#39;</span>  <span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s1">&#39;offset&#39;</span>     <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;period&#39;</span>     <span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s1">&#39;numCycles&#39;</span>  <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;shift&#39;</span>      <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">data_dict</span>  <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s1">&#39;cyclic&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">my_param</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the multiplexer all electrodes (counter, reference and working)
+are on digitally controlled switches.  By default, when not running a test,
+the electrodes will be disconnected. When using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code> method the electrodes will be
+automatically connected using these switches prior to running the test.
+Similarly, after the test is complete, the electrodes will be automatically
+disconnected.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this time the squareWave test is not compatible with the multiplexer
+expansion board. Attempting to run this when the multiplexer is enabled
+will result in an error.</p>
+</div>
+<p>To get a list of the test which are compatibile with the multiplexer the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_mux_test_names()</span></code>  can be used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_names</span> <span class="o">=</span> <span class="n">pstat</span><span class="o">.</span><span class="n">get_mux_test_names</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This command will return a list such as that shown below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cyclic&#39;</span><span class="p">,</span> <span class="s1">&#39;sinusoid&#39;</span><span class="p">,</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="s1">&#39;linearSweep&#39;</span><span class="p">,</span> <span class="s1">&#39;chronoamp&#39;</span><span class="p">,</span> <span class="s1">&#39;multiStep&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="manual-direct-operation-when-the-multiplexer">
+<h2>Manual/direct operation when the multiplexer<a class="headerlink" href="#manual-direct-operation-when-the-multiplexer" title="Permalink to this heading"></a></h2>
+<p>When using the Rodeostat with the multiplexer expansion board in manual/direct
+control mode a few special considerations are required.  By default all
+electrodes (counter, reference and working) are disconnected and you must
+manually specify in software when you want to connect a specific electrode.
+The methods used for the reference and counter electrodes this are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_ctr_elect_connected()</span></code> which connects/disconnects the counter electrode</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_ref_elect_connected()</span></code> which connects/disconnects the reference electrode</p></li>
+</ul>
+</div></blockquote>
+<p>For example, the following commmands connect the counter and reference electrodes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_ctr_elect_connected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># connect the counter electrode</span>
+<span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_ref_elect_connected</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># connect the reference electrode</span>
+</pre></div>
+</div>
+<p>Similarly, the counter and referece electrodes can be disconnected as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_ctr_elect_connected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># disconnect the counter electrode</span>
+<span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_ref_elect_connected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># disconnect the reference electrode</span>
+</pre></div>
+</div>
+<p>The enabled working electrodes are automatically connected to multiplexer. In
+addition the working electrodes can be connected to current measurement
+circuit (transimpedance amplifier) via the make-before-break multiplexer using the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_wrk_elect_connected()</span></code> method. This
+command takes as an argument the number of the working electrode you would like
+to connect to the measurement circuit. For example, to connect working
+electrode number 3 to the current measurement circuit you would use the folling
+command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_wrk_elect_connected</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># connect working electrode number 3 to TIA</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only one enabled working electrode can be connected to the
+measurement circuit at a time. For example, if working electrode number 3 is
+connected the the current measurement and you wish to connect working
+electrode 5 to this circuit you can do this by running the command
+pstat.set_mux_wrk_elect_connected(5). This will connect working electrode 5
+to the measurement circuit. However, prior to connecting working electrode
+5, working electrode 3 will first be disconnected, using the a
+make-before-break protocol, before connecting electrode 5.</p>
+</div>
+<p>To disconnect all working electrodes from the measurement circuit the you can
+run the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_wrk_elect_connected()</span></code>  method
+with an argument of False. For example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">set_mux_wrk_elect_connected</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># disconnect all working electrodes from TIA</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When working electrodes are enabled the are connected electronically to the
+multiplexer (and Rodeostat). At this point the can sink/source current. The
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_wrk_elect_connected()</span></code> just selects
+which of the enabled working electrodes is connect to current measurent
+circuit (transimpedance amplifier) using the make-before-break protocol.</p>
+</div>
+<p>To disconnect all electrodes (counter, reference and working) with a single command the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">disconnect_all_mux_elect()</span></code> method  may be used as shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pstat</span><span class="o">.</span><span class="n">disconnect_all_mux_elect</span><span class="p">()</span>  <span class="c1"># disconnect all electrodes</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Worked Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, Will Dickson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

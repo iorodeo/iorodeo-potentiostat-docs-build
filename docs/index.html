@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iorodeo-potentiostat &mdash; iorodeo-potentiostat 0.0.3 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> iorodeo-potentiostat
+            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexer.html">Multiplexer Exapansion Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Worked Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">iorodeo-potentiostat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">iorodeo-potentiostat</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="iorodeo-potentiostat">
+<h1>iorodeo-potentiostat<a class="headerlink" href="#iorodeo-potentiostat" title="Permalink to this heading"></a></h1>
+<p>A Python library for controlling IO Rodeo’s Rodeostat open source potentiostat</p>
+<figure class="align-center">
+<img alt="_images/rodeostat_v0p2_pcb.png" src="_images/rodeostat_v0p2_pcb.png" />
+</figure>
+<p>IO Rodeo’s Rodeostat is an open source potentiostat for performing
+electrochemical measurments which is designed to work with the <a class="reference external" href="https://www.pjrc.com/teensy/teensy31.html">teensy 3.2
+development board</a>.
+The <strong>iorodeo-potentiostat</strong> library provides a simple highlevel intreface for
+controlling the Rodeostat allowing users to easily:</p>
+<ul class="simple">
+<li><p>set/get the parameters used for the voltammetric tests</p></li>
+<li><p>run voltammetric tests and collect data from the device (time, voltage, current)</p></li>
+<li><p>set/get the output voltage and current measurement ranges</p></li>
+<li><p>set/get the sample rate/period used for measurements</p></li>
+</ul>
+<p>To quickly get up and running using the library see the <a class="reference internal" href="getting_started.html#getting-started-ref"><span class="std std-ref">Getting Started</span></a> guide.
+For a more comprehensive coverage of the API provided by the library see the <a class="reference internal" href="api_reference.html#api-ref"><span class="std std-ref">API Reference</span></a>.</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-pypi">Installing from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installing-from-source">Installing from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#virtualenv">Virtualenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#creating-a-device-object">Creating a device object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#getting-list-of-voltametric-tests">Getting list of voltametric tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#getting-voltammetric-test-parameters">Getting voltammetric test parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-voltammetric-test-parameters">Setting voltammetric test parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#getting-setting-measurement-current-range">Getting/setting measurement current range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#getting-setting-sample-rate">Getting/setting sample rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#running-voltammetric-tests">Running  voltammetric tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-output-voltage-range">Setting output voltage range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#manual-direct-operation">Manual/direct operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-device-identification-number">Setting device identification number</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexer.html">Multiplexer Exapansion Board</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multiplexer.html#enabling-disabling-the-multiplexer">Enabling/Disabling the multiplexer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiplexer.html#setting-the-working-electrode-channels">Setting the working electrode channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiplexer.html#running-tests">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiplexer.html#manual-direct-operation-when-the-multiplexer">Manual/direct operation when the multiplexer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Worked Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#cyclic-voltammetry">Cyclic voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#constant-voltage-voltammetry">Constant voltage voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#manual-direct-control">Manual/direct control:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#cyclic-voltammetry">Cyclic voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#linear-sweep-voltammetry">Linear sweep voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#constant-voltage">Constant voltage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#sinusoidal-voltammetry">Sinusoidal voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#square-wave-voltammetry">Square wave voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#chronoamperometry">Chronoamperometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#multistep-voltammetry">Multistep voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#squarewave-voltammetry">Squarewave voltammetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_reference.html#potentiostat">potentiostat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_reference.html#potentiostat.potentiostat.Potentiostat"><code class="docutils literal notranslate"><span class="pre">Potentiostat</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#schematic">Schematic</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, Will Dickson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
