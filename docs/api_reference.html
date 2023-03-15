@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; iorodeo-potentiostat 0.0.3 documentation</title>
+  <title>API Reference &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
             <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.3
+                0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -592,7 +592,7 @@ feature requires hardware version &gt;= HW0.2</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.run_test">
-<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.run_test" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.run_test" title="Permalink to this definition"></a></dt>
 <dd><p>Runs the test with specified test name and returns the time, voltage
 and current data.</p>
 <dl class="field-list simple">
@@ -604,6 +604,8 @@ and current data.</p>
 <li><p><strong>param</strong> (<em>dict</em>) – parameter settings for test, the default is None in
 which case the current values are used.</p></li>
 <li><p><strong>filename</strong> (<em>str</em>) – name of output file for saving data</p></li>
+<li><p><strong>on_data</strong> (<em>function</em>) – callback function called on arrival of new data from
+the device. This function takes four arguments: chan, t, volt, and curr.</p></li>
 <li><p><strong>display</strong> (<em>str</em>) – output display mode, display==’pbar’ show a progressbar,
 display==’data’ shows a text stream and display==’’ shows nothing</p></li>
 <li><p><strong>timeunit</strong> (<em>str</em>) – units for time values, if timeunit==’s’ then time
