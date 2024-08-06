@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Worked Examples &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
-            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,6 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Serial Commands</a></li>
 </ul>
 
         </div>
@@ -76,7 +82,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Worked Examples</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
@@ -88,17 +94,17 @@
            <div itemprop="articleBody">
              
   <section id="worked-examples">
-<span id="examples-ref"></span><h1>Worked Examples<a class="headerlink" href="#worked-examples" title="Permalink to this heading"></a></h1>
+<span id="examples-ref"></span><h1>Worked Examples<a class="headerlink" href="#worked-examples" title="Link to this heading"></a></h1>
 <p>In this section we show several worked examples demonstrating how to use iorodeo-potentiostat library
 with your Rodeostat shield to make measurements.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The examples in this section make use of the <a class="reference external" href="http://matplotlib.org/">Matplotlib</a> <a class="footnote-reference brackets" href="#id2" id="id3">1</a> plotting library.
-You can find Instructions for installing maplotlib here: <a class="reference external" href="http://matplotlib.org/users/installing.html">installing Matplotlib</a> <a class="footnote-reference brackets" href="#id4" id="id5">2</a>.</p>
+<p>The examples in this section make use of the <a class="reference external" href="http://matplotlib.org/">Matplotlib</a> <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> plotting library.
+You can find Instructions for installing maplotlib here: <a class="reference external" href="http://matplotlib.org/users/installing.html">installing Matplotlib</a> <a class="footnote-reference brackets" href="#id4" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
 </div>
 <section id="cyclic-voltammetry">
-<h2>Cyclic voltammetry<a class="headerlink" href="#cyclic-voltammetry" title="Permalink to this heading"></a></h2>
-<p>In the following example we demonstate how perform a <a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">cyclic voltammetry</a> <a class="footnote-reference brackets" href="#id6" id="id7">3</a> test with the following parameters:</p>
+<h2>Cyclic voltammetry<a class="headerlink" href="#cyclic-voltammetry" title="Link to this heading"></a></h2>
+<p>In the following example we demonstate how perform a <a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">cyclic voltammetry</a> <a class="footnote-reference brackets" href="#id6" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> test with the following parameters:</p>
 <ul class="simple">
 <li><p>Starts and ends at minimum voltage of -100 mV .</p></li>
 <li><p>Reaches a maximum voltage of 1000 mV at mid-cycle.</p></li>
@@ -186,10 +192,10 @@ electrode in a 8mM solution of ascorbate, is shown below.</p>
 <img alt="_images/cyclic_example_curr_vs_volt.png" src="_images/cyclic_example_curr_vs_volt.png" />
 </figure>
 <p>Further details on the methods used for the ascorbate experiments can be found
-here <a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a> <a class="footnote-reference brackets" href="#id8" id="id9">4</a>.</p>
+here <a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a> <a class="footnote-reference brackets" href="#id8" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="constant-voltage-voltammetry">
-<h2>Constant voltage voltammetry<a class="headerlink" href="#constant-voltage-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Constant voltage voltammetry<a class="headerlink" href="#constant-voltage-voltammetry" title="Link to this heading"></a></h2>
 <p>This example demonstrates how to preform constant voltage voltammetry. The test parameters are as follows:</p>
 <ul class="simple">
 <li><p>Prior to the start of the test a quiet period is used where the output voltage at 0V for 1s (1000ms).</p></li>
@@ -202,7 +208,7 @@ here <a class="reference external" href="http://potentiostat.iorodeo.com/methods
 <span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;/dev/ttyACM0&#39;</span>    <span class="c1"># Serial port for potentiostat device</span>
 <span class="n">datafile</span> <span class="o">=</span> <span class="s1">&#39;data.txt&#39;</span>    <span class="c1"># Name of output data file</span>
 
-<span class="n">test_name</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span>   <span class="c1"># Name of test to run - constant volate voltammetery</span>
+<span class="n">test_name</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span>   <span class="c1"># Name of test to run - constant voltage voltammetery</span>
 <span class="n">curr_range</span> <span class="o">=</span> <span class="s1">&#39;100uA&#39;</span>     <span class="c1"># Name of current range for test [-10uA, +10uA]</span>
 <span class="n">sample_rate</span> <span class="o">=</span> <span class="mf">100.0</span>      <span class="c1"># Rate (samples/sec) at which to collect samples </span>
 
@@ -258,7 +264,7 @@ exponentially, as the capacitor C1 charges, gradually approaching a steady state
 value.</p>
 </section>
 <section id="manual-direct-control">
-<h2>Manual/direct control:<a class="headerlink" href="#manual-direct-control" title="Permalink to this heading"></a></h2>
+<h2>Manual/direct control:<a class="headerlink" href="#manual-direct-control" title="Link to this heading"></a></h2>
 <p>In this section we give several examples which demostrate how to use the
 Rodeostat  in manual/direct control mode. When using this mode,
 the output voltage is set and the current is measured directly from the host PC
@@ -270,7 +276,7 @@ in firmware on the Teensy 3.2.  However, it does offer a great deal of
 flexibility to the user and enables the creation of custom voltammetric test
 without any firmware programming.</p>
 <section id="example-1-linear-plus-sinewave">
-<h3>Example 1: linear plus sinewave<a class="headerlink" href="#example-1-linear-plus-sinewave" title="Permalink to this heading"></a></h3>
+<h3>Example 1: linear plus sinewave<a class="headerlink" href="#example-1-linear-plus-sinewave" title="Link to this heading"></a></h3>
 <p>This example demonstrates how to use manual/direct control to create an output voltage
 which is sum of a linear function and a sine wave.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
@@ -391,7 +397,7 @@ own custom voltage function which gives specifies the desired output voltage as
 a function of time.</p>
 </section>
 <section id="example-2-long-duration-constant-voltage-test">
-<h3>Example 2: long duration constant voltage test<a class="headerlink" href="#example-2-long-duration-constant-voltage-test" title="Permalink to this heading"></a></h3>
+<h3>Example 2: long duration constant voltage test<a class="headerlink" href="#example-2-long-duration-constant-voltage-test" title="Link to this heading"></a></h3>
 <p>Suppose you want to perform a very long duration (hours to days) constant
 voltage test with the potentiostat. The sample rate for this test would be
 fairly low - seconds to minutes between samples. In addition you wanted it such
@@ -519,21 +525,25 @@ otherwise a new log file will be created.</p>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p><a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
-<dd><p><a class="reference external" href="http://matplotlib.org/users/installing.html">http://matplotlib.org/users/installing.html</a></p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id7">3</a></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a></p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
-<dd><p><a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a></p>
-</dd>
-</dl>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://matplotlib.org/users/installing.html">http://matplotlib.org/users/installing.html</a></p>
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a></p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">4</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://potentiostat.iorodeo.com/methods">http://potentiostat.iorodeo.com/methods</a></p>
+</aside>
+</aside>
 </section>
 </section>
 

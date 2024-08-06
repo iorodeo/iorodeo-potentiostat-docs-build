@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Multiplexer Exapansion Board &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
-            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,6 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Serial Commands</a></li>
 </ul>
 
         </div>
@@ -72,7 +78,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Multiplexer Exapansion Board</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/multiplexer.rst.txt" rel="nofollow"> View page source</a>
@@ -84,14 +90,14 @@
            <div itemprop="articleBody">
              
   <section id="multiplexer-exapansion-board">
-<span id="multiplexer-ref"></span><h1>Multiplexer Exapansion Board<a class="headerlink" href="#multiplexer-exapansion-board" title="Permalink to this heading"></a></h1>
+<span id="multiplexer-ref"></span><h1>Multiplexer Exapansion Board<a class="headerlink" href="#multiplexer-exapansion-board" title="Link to this heading"></a></h1>
 <p>This section provides a short guide to help you begin using your Rodeostat in
 conjunction with the multiplexer expansion board.  This  expansion board
 enables the Rodeostat to use up to seven independent working electrodes
 simultaneously. When connected to the Rodeostat additional features provided
 multiplexer may accessed programmatically via the Python API.</p>
 <section id="enabling-disabling-the-multiplexer">
-<h2>Enabling/Disabling the multiplexer<a class="headerlink" href="#enabling-disabling-the-multiplexer" title="Permalink to this heading"></a></h2>
+<h2>Enabling/Disabling the multiplexer<a class="headerlink" href="#enabling-disabling-the-multiplexer" title="Link to this heading"></a></h2>
 <p>In order to use the multiplexer it must first be enabled. This can be done
 using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_mux_enabled()</span></code> method. To enable the
 multiplexer you would run the following command</p>
@@ -107,7 +113,7 @@ will be either True/False indicating whether or not the multiplexer has been
 successfully enabled/disabled respectively.</p>
 </section>
 <section id="setting-the-working-electrode-channels">
-<h2>Setting the working electrode channels<a class="headerlink" href="#setting-the-working-electrode-channels" title="Permalink to this heading"></a></h2>
+<h2>Setting the working electrode channels<a class="headerlink" href="#setting-the-working-electrode-channels" title="Link to this heading"></a></h2>
 <p>The multiplexer has seven working electrode channels. You don’t need to use all
 the working electrode channels and the same time. The subset of working
 electrode channel which are enabled can be set using the
@@ -127,7 +133,7 @@ the command</p>
 that at least one working electrode channel is enabled.</p>
 </section>
 <section id="running-tests">
-<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this heading"></a></h2>
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h2>
 <p>Running tests with the multiplexer expansion board enabled is almost exactly
 the same as normal using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code>
 method.  For example, in order to run the cyclic voltammetry test you could do
@@ -192,7 +198,7 @@ will result in an error.</p>
 </div>
 </section>
 <section id="manual-direct-operation-when-the-multiplexer">
-<h2>Manual/direct operation when the multiplexer<a class="headerlink" href="#manual-direct-operation-when-the-multiplexer" title="Permalink to this heading"></a></h2>
+<h2>Manual/direct operation when the multiplexer<a class="headerlink" href="#manual-direct-operation-when-the-multiplexer" title="Link to this heading"></a></h2>
 <p>When using the Rodeostat with the multiplexer expansion board in manual/direct
 control mode a few special considerations are required.  By default all
 electrodes (counter, reference and working) are disconnected and you must

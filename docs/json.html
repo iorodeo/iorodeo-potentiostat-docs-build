@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON Serial Commands &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Hardware Summary" href="hardware.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.7
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplexer.html">Multiplexer Exapansion Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Worked Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">JSON Serial Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-commands">List of commands</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iorodeo-potentiostat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">JSON Serial Commands</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/json.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="json-serial-commands">
+<span id="json-ref"></span><h1>JSON Serial Commands<a class="headerlink" href="#json-serial-commands" title="Link to this heading"></a></h1>
+<p>All messages sent between the Rodeostat and the host PC are sent as serialized
+JSON.  This section provides a brief introduction to to these commands and the
+associated responses to the command returned by the device.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Potentiostat class provides a high level interface implementing this
+protocol - so you don’t need to know the details of the JSON serial
+commands in order to use the Rodeostat with Python. We provide the details
+here in order ot enable a more complete understand of how the device
+functions and to assist those who wishing to develop their own custom
+programming interfaces with the Rodeostat.</p>
+</div>
+<p>The basic form of the commands sent from the host PC to the Rodeostat are JSON
+objects with the key “command” who’s value specifies the name of the command.
+Additional arguments, which are specific to the command, are given as key/value
+pairs. The names and number of the required additional arguments are specific
+to each command.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;command name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;arg1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;val1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;arg2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;val2&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The response from the device, in turn, is a JSON object containing a key named
+“success” who’s value is a boolean specifying whether or not the command was
+successful. If the command was successful the boolean value will be true and
+the object will contain a key named “response” who’s value contains the response
+from the device.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;response&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;val1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arg2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;val2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arg2&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>On the other hand if the command was unsuccessful the boolean value will be
+false and the object will contain the key “message” who’s value contains an
+error message from the device.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error message from device&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}}</span>
+</pre></div>
+</div>
+<section id="list-of-commands">
+<h2>List of commands<a class="headerlink" href="#list-of-commands" title="Link to this heading"></a></h2>
+<dl>
+<dt>getVariant</dt><dd><p>Returns a string representing the hardware variant</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetVariantCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVariant&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVersion&quot;</span><span class="p">,</span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;FW0.0.9&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>stopTest</dt><dd><p>Stops (any) currently running tests</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">StopTestCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;stopTest&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;stopTest&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getVolt</dt><dd><p>Returns the output voltage setting, i.e, the potential between the working
+and reference electrode.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetVoltCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVolt&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVolt&quot;</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-0.000244</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setVolt</dt><dd><p>Sets the output voltage setting, i.e., the potential between the working
+and reference electrode.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetVoltCmd</span><span class="p">,</span> <span class="n">VoltKey</span><span class="p">:</span> <span class="n">volt</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setVolt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setVolt&quot;</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">0.499878</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getCurr</dt><dd><p>Gets an immediate measurement of the working electrode current.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetCurrCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getCurr&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getCurr&quot;</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-0.095238</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getRefVolt</dt><dd><p>Gets an immediate measurement of the potential between the working and
+reference electrode.</p>
+<p>Form:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetRefVoltCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getRefVolt&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getRefVolt&quot;</span><span class="p">,</span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="mf">0.761661</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getParam</dt><dd><p>Returns the current values of the parameters for the specified
+voltammetric test.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetParamCmd</span><span class="p">,</span> <span class="n">TestKey</span><span class="p">:</span> <span class="n">testname</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getParam&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getParam&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="s2">&quot;cyclic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;param&quot;</span><span class="p">:{</span>
+<span class="w">            </span><span class="nt">&quot;quietValue&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;quietTime&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;amplitude&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;numCycles&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;shift&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setParam</dt><dd><p>Sets the parameters for the specified voltammetric test.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetParamCmd</span><span class="p">,</span> <span class="n">TestKey</span><span class="p">:</span> <span class="n">testname</span><span class="p">,</span> <span class="n">ParamKey</span><span class="p">:</span> <span class="n">param</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setParam&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;param&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;quietValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;quietTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;amplitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;numCycles&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;shift&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setParam&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;param&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;quietValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;quietTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;amplitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;period&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;numCycles&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;shift&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setVoltRange</dt><dd><p>Sets the output voltage range (V)- used when setting output voltage
+manually.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetVoltRangeCmd</span><span class="p">,</span> <span class="n">VoltRangeKey</span><span class="p">:</span> <span class="n">volt_range</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setVoltRange&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2V&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setVoltRange&quot;</span><span class="p">,</span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="s2">&quot;2V&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getVoltRange</dt><dd><p>Gets the current value for the output voltage range (V).</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetVoltRangeCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVoltRange&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVoltRange&quot;</span><span class="p">,</span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="s2">&quot;2V&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setCurrRange</dt><dd><p>Sets the range setting for measuring working electrode (uA).</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetCurrRangeCmd</span><span class="p">,</span> <span class="n">CurrRangeKey</span><span class="p">:</span> <span class="n">curr_range</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setCurrRange&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;currRange&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100uA&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setCurrRange&quot;</span><span class="p">,</span><span class="nt">&quot;currRange&quot;</span><span class="p">:</span><span class="s2">&quot;100uA&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getCurrRange:</dt><dd><p>Gets the device’s range setting for measuring working electrode current (uA).</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetCurrRangeCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getCurrRange&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getCurrRange&quot;</span><span class="p">,</span><span class="nt">&quot;currRange&quot;</span><span class="p">:</span><span class="s2">&quot;100uA&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getDeviceId</dt><dd><p>Gets the current value of the device identification number</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetDeviceIdCmd</span><span class="p">,</span> <span class="n">DeviceIdKey</span><span class="p">:</span> <span class="n">device_id</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getDeviceId&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getDeviceId&quot;</span><span class="p">,</span><span class="nt">&quot;deviceId&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setDeviceId</dt><dd><p>Sets the current value of the device identification number.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetDeviceIdCmd</span><span class="p">,</span> <span class="n">DeviceIdKey</span><span class="p">:</span> <span class="n">device_id</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setDeviceId&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;deviceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setDeviceId&quot;</span><span class="p">,</span><span class="nt">&quot;deviceId&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setSamplePeriod</dt><dd><p>Sets the sample period (ms) used for measurements. The sample period is
+the time between samples.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetSamplePeriodCmd</span><span class="p">,</span> <span class="n">SamplePeriodKey</span><span class="p">:</span> <span class="n">sample_period</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setSamplePeriod&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;samplePeriod&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setSamplePeriod&quot;</span><span class="p">,</span><span class="nt">&quot;samplePeriod&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getSamplePeriod</dt><dd><p>Gets the current value for the sample period (ms). The sample period is
+the time between samples.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetSamplePeriodCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getSamplePeriod&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getSamplePeriod&quot;</span><span class="p">,</span><span class="nt">&quot;samplePeriod&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getTestDoneTime</dt><dd><p>Gets the time in milliseonds required to complete the specified test including
+any quietTime, etc.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetTestDoneTimeCmd</span><span class="p">,</span> <span class="n">TestKey</span><span class="p">:</span> <span class="n">test</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getTestDoneTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getTestDoneTime&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;testDoneTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11000</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getTestNames</dt><dd><p>Gets the list of the names of all tests which can be performed by the
+device with the current firmware.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetTestNamesCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getTestNames&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getTestNames&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;testNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cyclic&quot;</span><span class="p">,</span><span class="s2">&quot;sinusoid&quot;</span><span class="p">,</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span><span class="s2">&quot;squareWave&quot;</span><span class="p">,</span><span class="s2">&quot;linearSweep&quot;</span><span class="p">,</span><span class="s2">&quot;chronoamp&quot;</span><span class="p">,</span><span class="s2">&quot;multiStep&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getVersion</dt><dd><p>Gets the version string for the firmware on the device.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetVersionCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getVersion&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getVersion&quot;</span><span class="p">,</span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;FW0.0.9&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getHardwareVersion</dt><dd><p>Returns string representing the hardware version.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetHardwareVersionCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getHardwareVersion&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getHardwareVersion&quot;</span><span class="p">,</span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;V0.2&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setRefElectConnected</dt><dd><p>Sets the connected state (True/False) of the reference electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetRefElectConnCmd</span><span class="p">,</span> <span class="n">ConnectedKey</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setRefElectConnected&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setRefElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getRefElectConnected</dt><dd><p>Gets the connected state (True/False) of the reference electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetRefElectConnCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getRefElectConnected&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getRefElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setCtrElectConnected</dt><dd><p>Sets the connected state (True/False) of the counter electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetCtrElectConnCmd</span><span class="p">,</span> <span class="n">ConnectedKey</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setCtrElectConnected&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setCtrElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getCtrElectConnected</dt><dd><p>Gets the connected state (True/False) of the counter electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetCtrElectConnCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getCtrElectConnected&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getCtrElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setWrkElectConnected</dt><dd><p>Sets the connected state (True/False) of the working electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetWrkElectConnCmd</span><span class="p">,</span> <span class="n">ConnectedKey</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setWrkElectConnected&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setWrkElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getWrkElectConnected</dt><dd><p>Gets the connected state (True/False) of the working electrode.  This
+feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetWrkElectConnCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getWrkElectConnected&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example resposnse:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getWrkElectConnected&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setAllElectConneced</dt><dd><p>Sets the connected state (True/False) of all the electrodes (referene,
+counter and working). This feature requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetAllElectConnCmd</span><span class="p">,</span> <span class="n">ConnectedKey</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setAllElectConnected&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setAllElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getAllElectConnected</dt><dd><p>Gets the connected state (True/False) of all the electrodes (referene,
+counter and working). Only True if all are connected. This feature
+requires hardware version &gt;= HW0.2</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetAllElectConnCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getAllElectConnected&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getAllElectConnected&quot;</span><span class="p">,</span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setElectAutoConnect</dt><dd><p>Set auto-connect/auto-disconnect feature. If auto-connect is set to True
+then the  ref, ctr and wrk electrodes will be automatically connected at
+the beginning of each test and automatically disconnected at the end of
+each test.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetElectAutoConnCmd</span><span class="p">,</span> <span class="n">AutoConnectKey</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setElectAutoConnect&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;autoConnect&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setElectAutoConnect&quot;</span><span class="p">,</span><span class="nt">&quot;autoConnect&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getElectAutoConnect</dt><dd><p>Gets the value of the device’s auto-connect/auto-disconnect setting.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetElectAutoConnCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getElectAutoConnect&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getElectAutoConnect&quot;</span><span class="p">,</span><span class="nt">&quot;autoConnect&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>setRefElectVoltRange</dt><dd><p>Sets the voltage range for the reference electrode analog input.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">SetRefElectVoltRangeCmd</span><span class="p">,</span> <span class="n">VoltRangeKey</span><span class="p">:</span> <span class="n">volt_range</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setRefElectVoltRange&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2V&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;setRefElectVoltRange&quot;</span><span class="p">,</span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="s2">&quot;2V&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>getRefElectVoltRange</dt><dd><p>Gets the  device’s voltage range setting for the reference electrode
+analog input.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">GetRefElectVoltRangeCmd</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getRefElectVoltRange&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;getRefElectVoltRange&quot;</span><span class="p">,</span><span class="nt">&quot;voltRange&quot;</span><span class="p">:</span><span class="s2">&quot;5V&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</dd>
+<dt>runTest</dt><dd><p>Runs the test with specified test name and returns the time, voltage and
+current data.</p>
+<p>Form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">CommandKey</span><span class="p">:</span> <span class="n">RunTestCmd</span><span class="p">,</span> <span class="n">TestKey</span><span class="p">:</span> <span class="n">testname</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example command:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;runTest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cyclic&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Example response:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;response&quot;</span><span class="p">:{</span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="s2">&quot;runTest&quot;</span><span class="p">,</span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="s2">&quot;cyclic&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>followed by streaming data</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-0.1</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-2.799983</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-0.1</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-2.8295</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-0.1</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-2.936976</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-0.1</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-2.782137</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>… etc</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">10980</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-1.38</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-28.1935</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;t&quot;</span><span class="p">:</span><span class="mi">11000</span><span class="p">,</span><span class="nt">&quot;v&quot;</span><span class="p">:</span><span class="mf">-1.5</span><span class="p">,</span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="mf">-30.62896</span><span class="p">}</span>
+<span class="p">{}</span>
+</pre></div>
+</div>
+<p>An empty object marks the end of the stream</p>
+</dd>
+</dl>
+<p><strong>TO DO … MUX commands</strong></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hardware.html" class="btn btn-neutral float-left" title="Hardware Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017, Will Dickson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

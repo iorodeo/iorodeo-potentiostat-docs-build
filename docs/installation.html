@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Installation &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
-            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,6 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Serial Commands</a></li>
 </ul>
 
         </div>
@@ -76,7 +82,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
@@ -88,11 +94,11 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>This library is tested on Python 2.7 and Python 3.x.</p>
 <section id="installing-from-pypi">
-<h2>Installing from PyPI<a class="headerlink" href="#installing-from-pypi" title="Permalink to this heading"></a></h2>
-<p>You can install the iorodeo-potentiostat library from <a class="reference external" href="https://pypi.python.org/pypi">PyPi</a> <a class="footnote-reference brackets" href="#id2" id="id3">1</a> using pip as follows:</p>
+<h2>Installing from PyPI<a class="headerlink" href="#installing-from-pypi" title="Link to this heading"></a></h2>
+<p>You can install the iorodeo-potentiostat library from <a class="reference external" href="https://pypi.python.org/pypi">PyPi</a> <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using pip as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>iorodeo-potentiostat
 </pre></div>
 </div>
@@ -100,10 +106,10 @@
 automatically be downloaded and installed when running this command.</p>
 </section>
 <section id="installing-from-source">
-<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this heading"></a></h2>
+<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Link to this heading"></a></h2>
 <p>An alternative installation method is to download and install from source. If
 you would like to install in this manner the  source for the library can be
-found in the <a class="reference external" href="https://github.com/iorodeo/potentiostat/">potentiostat shield repository</a> <a class="footnote-reference brackets" href="#id4" id="id5">2</a>.  After downloading a copy of
+found in the <a class="reference external" href="https://github.com/iorodeo/potentiostat/">potentiostat shield repository</a> <a class="footnote-reference brackets" href="#id4" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.  After downloading a copy of
 the repository you can install the software by running the following command in
 the module’s top level directory (software/python/potentiostat).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>setup.py<span class="w"> </span>install
@@ -112,28 +118,28 @@ the module’s top level directory (software/python/potentiostat).</p>
 <p>If your are installing from source (not with pip) then you will also need to
 install the following dependencies:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pythonhosted.org/pyserial/">Pyserial &gt;= 2.6</a> <a class="footnote-reference brackets" href="#id18" id="id19">9</a></p></li>
-<li><p><a class="reference external" href="https://pypi.python.org/pypi/progressbar33">Progressbar33</a> <a class="footnote-reference brackets" href="#id20" id="id21">10</a></p></li>
+<li><p><a class="reference external" href="https://pythonhosted.org/pyserial/">Pyserial &gt;= 2.6</a> <a class="footnote-reference brackets" href="#id18" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/progressbar33">Progressbar33</a> <a class="footnote-reference brackets" href="#id20" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a></p></li>
 </ul>
 </section>
 <section id="virtualenv">
-<h2>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this heading"></a></h2>
+<h2>Virtualenv<a class="headerlink" href="#virtualenv" title="Link to this heading"></a></h2>
 <p>If you are developing with the library it is very likely that you will want to
-use <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> <a class="footnote-reference brackets" href="#id6" id="id7">3</a> during installation. A tutorial describing how to use virtualenv
-can be found here <a class="reference external" href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">virtualenv tutorial</a> <a class="footnote-reference brackets" href="#id8" id="id9">4</a>  and more detailed information can be
-found in the <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv documentation</a> <a class="footnote-reference brackets" href="#id10" id="id11">5</a>.  If you are using the library on
+use <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> <a class="footnote-reference brackets" href="#id6" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> during installation. A tutorial describing how to use virtualenv
+can be found here <a class="reference external" href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">virtualenv tutorial</a> <a class="footnote-reference brackets" href="#id8" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>  and more detailed information can be
+found in the <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv documentation</a> <a class="footnote-reference brackets" href="#id10" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.  If you are using the library on
 Windows you might want to look this additional tutorial <a class="reference external" href="http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/">Python, pip and
-virtuanenv on Windows</a> <a class="footnote-reference brackets" href="#id16" id="id17">8</a>.</p>
+virtuanenv on Windows</a> <a class="footnote-reference brackets" href="#id16" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
 <section id="driver-windows-only">
-<h3>Driver (Windows Only)<a class="headerlink" href="#driver-windows-only" title="Permalink to this heading"></a></h3>
+<h3>Driver (Windows Only)<a class="headerlink" href="#driver-windows-only" title="Link to this heading"></a></h3>
 <p>On versions of windows &lt; 10. You will need to install a driver in order to communicate with the
-teensy 3.2 as a serial port. The easiest way to do this is to run the <a class="reference external" href="https://www.pjrc.com/teensy/td_download.html">teensyduino installer</a> <a class="footnote-reference brackets" href="#id12" id="id13">6</a>.</p>
+teensy 3.2 as a serial port. The easiest way to do this is to run the <a class="reference external" href="https://www.pjrc.com/teensy/td_download.html">teensyduino installer</a> <a class="footnote-reference brackets" href="#id12" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
 <p>Note, this step is not required on Linux or on Mac OS.</p>
 </section>
 <section id="udev-rules-linux-only">
-<h3>udev rules (Linux only)<a class="headerlink" href="#udev-rules-linux-only" title="Permalink to this heading"></a></h3>
+<h3>udev rules (Linux only)<a class="headerlink" href="#udev-rules-linux-only" title="Link to this heading"></a></h3>
 <p>On Linux you may want to give non-root users permission to use the teensy
-device. This can be done by adding the <a class="reference external" href="https://www.pjrc.com/teensy/49-teensy.rules">49-teensy.rules</a> <a class="footnote-reference brackets" href="#id14" id="id15">7</a> file to the
+device. This can be done by adding the <a class="reference external" href="https://www.pjrc.com/teensy/49-teensy.rules">49-teensy.rules</a> <a class="footnote-reference brackets" href="#id14" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> file to the
 /etc/udev/rules.d directory and reloading the rules using udevadm.</p>
 <p>Copy to /etc/udev/rules.d as follows</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span><span class="m">49</span>-teensy.rules<span class="w"> </span>/etc/udev/rules.d/
@@ -146,39 +152,49 @@ device. This can be done by adding the <a class="reference external" href="https
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p><a class="reference external" href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
-<dd><p><a class="reference external" href="https://github.com/iorodeo/potentiostat/">https://github.com/iorodeo/potentiostat/</a></p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id7">3</a></span></dt>
-<dd><p><a class="reference external" href="https://pypi.python.org/pypi/virtualenv">https://pypi.python.org/pypi/virtualenv</a></p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
-<dd><p><a class="reference external" href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/</a></p>
-</dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id11">5</a></span></dt>
-<dd><p><a class="reference external" href="https://virtualenv.pypa.io/en/stable/">https://virtualenv.pypa.io/en/stable/</a></p>
-</dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id13">6</a></span></dt>
-<dd><p><a class="reference external" href="https://www.pjrc.com/teensy/td_download.html">https://www.pjrc.com/teensy/td_download.html</a></p>
-</dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id15">7</a></span></dt>
-<dd><p><a class="reference external" href="https://www.pjrc.com/teensy/49-teensy.rules">https://www.pjrc.com/teensy/49-teensy.rules</a></p>
-</dd>
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id17">8</a></span></dt>
-<dd><p><a class="reference external" href="http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/">http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/</a></p>
-</dd>
-<dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id19">9</a></span></dt>
-<dd><p><a class="reference external" href="https://pythonhosted.org/pyserial/">https://pythonhosted.org/pyserial/</a></p>
-</dd>
-<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id21">10</a></span></dt>
-<dd><p><a class="reference external" href="https://pypi.python.org/pypi/progressbar33">https://pypi.python.org/pypi/progressbar33</a></p>
-</dd>
-</dl>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/iorodeo/potentiostat/">https://github.com/iorodeo/potentiostat/</a></p>
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.python.org/pypi/virtualenv">https://pypi.python.org/pypi/virtualenv</a></p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">4</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/">http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/</a></p>
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://virtualenv.pypa.io/en/stable/">https://virtualenv.pypa.io/en/stable/</a></p>
+</aside>
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">6</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.pjrc.com/teensy/td_download.html">https://www.pjrc.com/teensy/td_download.html</a></p>
+</aside>
+<aside class="footnote brackets" id="id14" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">7</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.pjrc.com/teensy/49-teensy.rules">https://www.pjrc.com/teensy/49-teensy.rules</a></p>
+</aside>
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">8</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/">http://www.tylerbutler.com/2012/05/how-to-install-python-pip-and-virtualenv-on-windows-with-powershell/</a></p>
+</aside>
+<aside class="footnote brackets" id="id18" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">9</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pythonhosted.org/pyserial/">https://pythonhosted.org/pyserial/</a></p>
+</aside>
+<aside class="footnote brackets" id="id20" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">10</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://pypi.python.org/pypi/progressbar33">https://pypi.python.org/pypi/progressbar33</a></p>
+</aside>
+</aside>
 </section>
 </section>
 

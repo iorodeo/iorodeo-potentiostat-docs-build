@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voltametric Tests &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
-            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -62,6 +67,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Serial Commands</a></li>
 </ul>
 
         </div>
@@ -77,7 +83,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Voltametric Tests</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tests.rst.txt" rel="nofollow"> View page source</a>
@@ -89,11 +95,11 @@
            <div itemprop="articleBody">
              
   <section id="voltametric-tests">
-<span id="tests-ref"></span><h1>Voltametric Tests<a class="headerlink" href="#voltametric-tests" title="Permalink to this heading"></a></h1>
+<span id="tests-ref"></span><h1>Voltametric Tests<a class="headerlink" href="#voltametric-tests" title="Link to this heading"></a></h1>
 <p>In this section we describe pre-programmed tests defined the potentiostat
 shield’s firmware.</p>
 <section id="cyclic-voltammetry">
-<h2>Cyclic voltammetry<a class="headerlink" href="#cyclic-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Cyclic voltammetry<a class="headerlink" href="#cyclic-voltammetry" title="Link to this heading"></a></h2>
 <p>In cyclic voltammetry current is measured while the potential (voltage) between
 the working and reference electrode is ramped up and down cyclically in piecewise
 linear fashion - in a triangle waveform - for a number of cycles.  This triangle
@@ -106,12 +112,6 @@ the end of the quiet period the triangle waveform output begins.  The seven
 parameters used to define the cyclic voltammetry test are test are summarized
 in the table below.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 52%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -207,10 +207,10 @@ as follows:</p>
 </ul>
 <p>where period has units of (s) and scan rate has units of (V/s)</p>
 </div>
-<p>More information on cyclic voltammetry can be found here <a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a> <a class="footnote-reference brackets" href="#id1" id="id2">1</a></p>
+<p>More information on cyclic voltammetry can be found here <a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a> <a class="footnote-reference brackets" href="#id1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="linear-sweep-voltammetry">
-<h2>Linear sweep voltammetry<a class="headerlink" href="#linear-sweep-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Linear sweep voltammetry<a class="headerlink" href="#linear-sweep-voltammetry" title="Link to this heading"></a></h2>
 <p>In linear sweep voltammetry current is measured while the potential between the
 working and reference electrode sweeps linearly over a some range.  The range
 is specified by a starting value, <em>startValue</em>, a final value, <em>finalValue</em>,
@@ -220,12 +220,6 @@ specified value.  The quiet period is specified by the quietTime and quietValue
 parameters. The five parameters used to define the linear sweep voltammetry
 test are test are summarized in the table below.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 52%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -289,10 +283,10 @@ as follows:</p>
 <p>where duration has units of (s).</p>
 </div>
 <p>Additional information on linear sweep voltammetry can be found here
-<a class="reference external" href="https://en.wikipedia.org/wiki/Linear_sweep_voltammetry">https://en.wikipedia.org/wiki/Linear_sweep_voltammetry</a> <a class="footnote-reference brackets" href="#id3" id="id4">2</a></p>
+<a class="reference external" href="https://en.wikipedia.org/wiki/Linear_sweep_voltammetry">https://en.wikipedia.org/wiki/Linear_sweep_voltammetry</a> <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="constant-voltage">
-<h2>Constant voltage<a class="headerlink" href="#constant-voltage" title="Permalink to this heading"></a></h2>
+<h2>Constant voltage<a class="headerlink" href="#constant-voltage" title="Link to this heading"></a></h2>
 <p>The constant voltage test measures the current while the potential between the
 working and reference electrode is held constant.  Like the other tests the
 constant voltage test includes an optional quiet period where the output
@@ -300,12 +294,6 @@ voltage is held and constant value (quietValue) for a fixed duration
 (quietTime) prior to the start of the test.  The four parameters which specify the
 voltage output for the constant voltage test are summarized in the table below.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 52%" />
-<col style="width: 14%" />
-<col style="width: 13%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -355,14 +343,8 @@ these parameters.</p>
 </figure>
 </section>
 <section id="sinusoidal-voltammetry">
-<h2>Sinusoidal voltammetry<a class="headerlink" href="#sinusoidal-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Sinusoidal voltammetry<a class="headerlink" href="#sinusoidal-voltammetry" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 14%" />
-<col style="width: 12%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -424,14 +406,8 @@ these parameters.</p>
 </div>
 </section>
 <section id="square-wave-voltammetry">
-<h2>Square wave voltammetry<a class="headerlink" href="#square-wave-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Square wave voltammetry<a class="headerlink" href="#square-wave-voltammetry" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 53%" />
-<col style="width: 14%" />
-<col style="width: 12%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -501,14 +477,8 @@ these parameters.</p>
 </div>
 </section>
 <section id="chronoamperometry">
-<h2>Chronoamperometry<a class="headerlink" href="#chronoamperometry" title="Permalink to this heading"></a></h2>
+<h2>Chronoamperometry<a class="headerlink" href="#chronoamperometry" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 48%" />
-<col style="width: 15%" />
-<col style="width: 21%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -546,14 +516,8 @@ these parameters.</p>
 </div>
 </section>
 <section id="multistep-voltammetry">
-<h2>Multistep voltammetry<a class="headerlink" href="#multistep-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Multistep voltammetry<a class="headerlink" href="#multistep-voltammetry" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 48%" />
-<col style="width: 15%" />
-<col style="width: 21%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -591,14 +555,8 @@ these parameters.</p>
 </div>
 </section>
 <section id="squarewave-voltammetry">
-<h2>Squarewave voltammetry<a class="headerlink" href="#squarewave-voltammetry" title="Permalink to this heading"></a></h2>
+<h2>Squarewave voltammetry<a class="headerlink" href="#squarewave-voltammetry" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 48%" />
-<col style="width: 15%" />
-<col style="width: 21%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>description</p></th>
@@ -660,15 +618,17 @@ these parameters.</p>
 </div>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a></p>
-</dd>
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Linear_sweep_voltammetry">https://en.wikipedia.org/wiki/Linear_sweep_voltammetry</a></p>
-</dd>
-</dl>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cyclic_voltammetry">https://en.wikipedia.org/wiki/Cyclic_voltammetry</a></p>
+</aside>
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Linear_sweep_voltammetry">https://en.wikipedia.org/wiki/Linear_sweep_voltammetry</a></p>
+</aside>
+</aside>
 </section>
 </section>
 

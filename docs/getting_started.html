@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,15 +30,19 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> iorodeo-potentiostat
-            <img src="_static/logo_new.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            iorodeo-potentiostat
+              <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
                 0.0.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,6 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tests.html">Voltametric Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON Serial Commands</a></li>
 </ul>
 
         </div>
@@ -78,7 +84,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Getting Started</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
@@ -90,11 +96,11 @@
            <div itemprop="articleBody">
              
   <section id="getting-started">
-<span id="getting-started-ref"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<span id="getting-started-ref"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <p>This section provides a short guide to help you begin using your Rodeostat with the
 <strong>iorodeo-potentiostat</strong> library.</p>
 <section id="creating-a-device-object">
-<h2>Creating a device object<a class="headerlink" href="#creating-a-device-object" title="Permalink to this heading"></a></h2>
+<h2>Creating a device object<a class="headerlink" href="#creating-a-device-object" title="Link to this heading"></a></h2>
 <p>The first step to controlling your Rodeostat is creating a device object. In
 order to do this you will need to know the name of the <strong>port</strong> on the computer
 which is associated with the Rodeostat.  The name of this port will vary
@@ -117,7 +123,7 @@ named pstat, using the above command.</p>
 </div>
 </section>
 <section id="getting-list-of-voltametric-tests">
-<h2>Getting list of voltametric tests<a class="headerlink" href="#getting-list-of-voltametric-tests" title="Permalink to this heading"></a></h2>
+<h2>Getting list of voltametric tests<a class="headerlink" href="#getting-list-of-voltametric-tests" title="Link to this heading"></a></h2>
 <p>A list of all of the voltammetric tests supported by the current firmware on
 the Rodeostat can be obtained using the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_test_names()</span></code> method.</p>
@@ -132,7 +138,7 @@ the Rodeostat can be obtained using the
 firmware on the Rodeostat.</p>
 </section>
 <section id="getting-voltammetric-test-parameters">
-<h2>Getting voltammetric test parameters<a class="headerlink" href="#getting-voltammetric-test-parameters" title="Permalink to this heading"></a></h2>
+<h2>Getting voltammetric test parameters<a class="headerlink" href="#getting-voltammetric-test-parameters" title="Link to this heading"></a></h2>
 <p>The current parameter values used for a particular voltammetric test are stored
 in memory on the potentiostat.  You can retrieve the current values for these
 parameters from the device using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_param()</span></code> method.</p>
@@ -153,7 +159,7 @@ are given in (V).  For a complete description of the parameters for all
 voltammetric see the <a class="reference internal" href="tests.html#tests-ref"><span class="std std-ref">Voltametric Tests</span></a> section of the documentation.</p>
 </section>
 <section id="setting-voltammetric-test-parameters">
-<span id="getting-started-set-param-ref"></span><h2>Setting voltammetric test parameters<a class="headerlink" href="#setting-voltammetric-test-parameters" title="Permalink to this heading"></a></h2>
+<span id="getting-started-set-param-ref"></span><h2>Setting voltammetric test parameters<a class="headerlink" href="#setting-voltammetric-test-parameters" title="Link to this heading"></a></h2>
 <p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_param()</span></code> method can be used to set the
 parameters used for a specific voltammetric test. The parameters are stored in
 RAM (voltile memory) on the Rodeostat. They will retain their value, for the
@@ -177,7 +183,7 @@ revert to their default  values.</p>
 </div>
 </section>
 <section id="getting-setting-measurement-current-range">
-<h2>Getting/setting measurement current range<a class="headerlink" href="#getting-setting-measurement-current-range" title="Permalink to this heading"></a></h2>
+<h2>Getting/setting measurement current range<a class="headerlink" href="#getting-setting-measurement-current-range" title="Link to this heading"></a></h2>
 <p>The Rodeostat has four programmable current measurement ranges. The
 exact values for the avialable ranges is determined by the hardware variant of
 the device you are using. The library will automatically
@@ -215,7 +221,7 @@ range can measure current in the range -10uA to +10uA.</p>
 </div>
 </section>
 <section id="getting-setting-sample-rate">
-<h2>Getting/setting sample rate<a class="headerlink" href="#getting-setting-sample-rate" title="Permalink to this heading"></a></h2>
+<h2>Getting/setting sample rate<a class="headerlink" href="#getting-setting-sample-rate" title="Link to this heading"></a></h2>
 <p>When running a test the device returns measurements at a specified rate
 (samples/sec) for the duration of the test.  You can use the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_sample_rate()</span></code> method to retrieve the
@@ -245,7 +251,7 @@ the sample period (given in seconds).</p>
 </div>
 </section>
 <section id="running-voltammetric-tests">
-<h2>Running  voltammetric tests<a class="headerlink" href="#running-voltammetric-tests" title="Permalink to this heading"></a></h2>
+<h2>Running  voltammetric tests<a class="headerlink" href="#running-voltammetric-tests" title="Link to this heading"></a></h2>
 <p>Voltammetric tests can be run using the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">run_test()</span></code> method. For example, in order to
 run the cyclic voltammetry test you could do the following.</p>
@@ -290,7 +296,7 @@ output voltage range before using this method.</p>
 </div>
 </section>
 <section id="setting-output-voltage-range">
-<h2>Setting output voltage range<a class="headerlink" href="#setting-output-voltage-range" title="Permalink to this heading"></a></h2>
+<h2>Setting output voltage range<a class="headerlink" href="#setting-output-voltage-range" title="Link to this heading"></a></h2>
 <p>Under certain circumstances, such as when using manual/direct control rather
 than a pre-programmed test proceedure,  you may want set the output voltage
 range of the Rodeostat directly. This can be done using the
@@ -318,7 +324,7 @@ range allows output voltages from -2V to +2V.</p>
 </div>
 </section>
 <section id="manual-direct-operation">
-<h2>Manual/direct operation<a class="headerlink" href="#manual-direct-operation" title="Permalink to this heading"></a></h2>
+<h2>Manual/direct operation<a class="headerlink" href="#manual-direct-operation" title="Link to this heading"></a></h2>
 <p>When operating the potentiostat manually you set the output voltage directly
 using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_volt()</span></code> method rather than using
 a pre-programmed voltammetric test. For example, the following command will set
@@ -354,7 +360,7 @@ switches from one range to the other.</p>
 </div>
 </section>
 <section id="setting-device-identification-number">
-<h2>Setting device identification number<a class="headerlink" href="#setting-device-identification-number" title="Permalink to this heading"></a></h2>
+<h2>Setting device identification number<a class="headerlink" href="#setting-device-identification-number" title="Link to this heading"></a></h2>
 <p>An identifying number can be assigned to the Rodeostat using the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">set_device_id()</span></code> method. For example, the
 following command will set the device identification number to 5.</p>
