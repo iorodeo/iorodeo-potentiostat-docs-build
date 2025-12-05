@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; iorodeo-potentiostat 0.0.7 documentation</title>
+  <title>API Reference &mdash; iorodeo-potentiostat 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=bbaf98b3"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -38,7 +38,7 @@
               <img src="_static/logo_new.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.0.7
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -58,6 +58,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#potentiostat">potentiostat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#potentiostat.potentiostat.DataDecodeException"><code class="docutils literal notranslate"><span class="pre">DataDecodeException</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat"><code class="docutils literal notranslate"><span class="pre">Potentiostat</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.allowed_dio_pin_modes"><code class="docutils literal notranslate"><span class="pre">Potentiostat.allowed_dio_pin_modes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.allowed_dio_pins"><code class="docutils literal notranslate"><span class="pre">Potentiostat.allowed_dio_pins()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect"><code class="docutils literal notranslate"><span class="pre">Potentiostat.disconnect_all_mux_elect()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_all_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_all_curr_range()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_all_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_all_elect_connected()</span></code></a></li>
@@ -67,6 +69,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_curr"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_curr()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_curr_range()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_device_id"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_dio_pin_mode"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_dio_pin_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_dio_value"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_dio_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_enabled_mux_channels"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_enabled_mux_channels()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_firmware_version"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_firmware_version()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.get_hardware_variant"><code class="docutils literal notranslate"><span class="pre">Potentiostat.get_hardware_variant()</span></code></a></li>
@@ -94,6 +98,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_ctr_elect_connected()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_curr_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_curr_range()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_device_id"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_dio_pin_mode"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_dio_pin_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_dio_value"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_dio_value()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_enabled_mux_channels"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_enabled_mux_channels()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_ctr_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_ctr_elect_connected()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_mux_enabled"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_mux_enabled()</span></code></a></li>
@@ -108,6 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_volt_range"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_volt_range()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.set_wrk_elect_connected"><code class="docutils literal notranslate"><span class="pre">Potentiostat.set_wrk_elect_connected()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.stop_test"><code class="docutils literal notranslate"><span class="pre">Potentiostat.stop_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiostat.potentiostat.Potentiostat.write"><code class="docutils literal notranslate"><span class="pre">Potentiostat.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -176,6 +183,37 @@ Potentiostat.</p>
 <dd class="field-even"><p><strong>timeout</strong> (<em>float</em>) – serial port ready timeout (seconds)</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.allowed_dio_pin_modes">
+<span class="sig-name descname"><span class="pre">allowed_dio_pin_modes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.allowed_dio_pin_modes" title="Link to this definition"></a></dt>
+<dd><p>Convenience function which gets the list of the string representation for
+all allowed DIO pin modes. This feature requires hardware version &gt;= HW0.2 and
+firmware version &gt;= FW0.1.1.</p>
+<dl class="simple">
+<dt>Retruns:</dt><dd><dl class="simple">
+<dt>allowed_dio_pin_modes: (list) the list of all allowed DIO pin_modes</dt><dd><p>as strings.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.allowed_dio_pins">
+<span class="sig-name descname"><span class="pre">allowed_dio_pins</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.allowed_dio_pins" title="Link to this definition"></a></dt>
+<dd><p>Convenience function which gets the list the string representations for
+all allowed DIO pins. This feature requires hardware version &gt;= HW0.2 and
+firmware version &gt;= FW0.1.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(list) the list of all allowed DIO pins as strings.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>allowed_dio_pis</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect">
 <span class="sig-name descname"><span class="pre">disconnect_all_mux_elect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.disconnect_all_mux_elect" title="Link to this definition"></a></dt>
@@ -294,6 +332,45 @@ This feature requires hardware version &gt;= HW0.2</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_dio_pin_mode">
+<span class="sig-name descname"><span class="pre">get_dio_pin_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_dio_pin_mode" title="Link to this definition"></a></dt>
+<dd><p>Gets the pin mode for the given DIO pin on the expansion header.
+This feature requires hardware version &gt;= HW0.2 and firmware version &gt;=
+FW0.1.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pin</strong> (<em>str/int</em>) – the string or integer representing the desired dio pin, e.g.,
+‘ExpDioPin3’, ‘ExpDioPin4’, etc.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the string respresentation of the current pins pin mode.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pin_mode (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.get_dio_value">
+<span class="sig-name descname"><span class="pre">get_dio_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.get_dio_value" title="Link to this definition"></a></dt>
+<dd><p>Sets the value for the DIO pin on the expansion header. This feature
+requires hardware version &gt;= HW0.2 and firmware version &gt;= FW0.1.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pin</strong> (<em>str/int</em>) – the string or integer representing the desired dio pin, e.g.,
+‘ExpDioPin3’, ‘ExpDioPin4’, etc.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the string representation of the value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>value (str)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -604,7 +681,7 @@ feature requires hardware version &gt;= HW0.2</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.run_test">
-<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_decode_err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.run_test" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">testname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pbar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeunit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_decode_err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_limit_err</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.run_test" title="Link to this definition"></a></dt>
 <dd><p>Runs the test with specified test name and returns the time, voltage
 and current data.</p>
 <dl class="field-list simple">
@@ -628,6 +705,8 @@ streaming before an exception (DataDecodeException) is rasied.
 If max_decode_err=0 (default) then no decode errors are allowed.
 If max_decode_err=None (default) then exceptions will not be triggered
 and decode errors will pass silently.</p></li>
+<li><p><strong>include_limit_err</strong> (<em>bool</em>) – flag indicating whether or not to include
+limit error information in output.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -756,6 +835,54 @@ This feature requires hardware version &gt;= HW0.2</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_dio_pin_mode">
+<span class="sig-name descname"><span class="pre">set_dio_pin_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin_mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_dio_pin_mode" title="Link to this definition"></a></dt>
+<dd><p>Set the pin mode for the given DIO pin on the expansion header. This
+feature requires hardware version &gt;= HW0.2 and firmware version &gt;=
+FW0.1.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> (<em>str/int</em>) – the string or integer representing the desired dio pin, e.g.
+‘ExpDioPin3’, ‘ExpDioPin4’, etc.</p></li>
+<li><p><strong>pin_mode</strong> – (str/int): the string or integer representing the desired dio
+pin_mode, e.g. ‘DioPinModeInput’, ‘DioPinModeOutput  or
+‘DioPinModeInputPullup’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the string respresentation of the current pins pin mode.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pin_mode (str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.set_dio_value">
+<span class="sig-name descname"><span class="pre">set_dio_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.set_dio_value" title="Link to this definition"></a></dt>
+<dd><p>Sets the value for the DIO pin on the expansion header. This feature
+requires hardware version &gt;= HW0.2 and firmware version &gt;= FW0.1.1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> (<em>str/int</em>) – the string or integer representing the desired dio pin, e.g.,
+‘ExpDioPin3’, ‘ExpDioPin4’, etc.</p></li>
+<li><p><strong>value</strong> – (str/int): the string or interger representing the desired value, e.g.,
+‘Low’ or ‘High’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the string representation of the value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>value (str)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -998,6 +1125,22 @@ feature requires hardware version &gt;= HW0.2</p>
 <dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.stop_test">
 <span class="sig-name descname"><span class="pre">stop_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rsp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.stop_test" title="Link to this definition"></a></dt>
 <dd><p>Stops (any) currently running tests.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="potentiostat.potentiostat.Potentiostat.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#potentiostat.potentiostat.Potentiostat.write" title="Link to this definition"></a></dt>
+<dd><p>This is a bit of a hack. There is currently a bug in Adafruit’s
+ArduinoCore-samd which effects USB Serial. In particular the bug causes
+the Serial.available method to return 0 when receiving messages with
+length an integer multiple of 64. All other messages sizes seem to work
+fine. However if, for example, you send messages of length 64 (included
+line terminator) Serial.available will return 0 until 4 such messages
+have been received and then, after receiving the 4th 64 byte message it
+will return 256 bytes.  This overloaded write  method avoids the issue
+by adding a byte to message whenever the length is an integer multiple
+of 64.  Hopefully, at some point we can remove this when the issues
+have been fixed.</p>
 </dd></dl>
 
 </dd></dl>
